@@ -5,3 +5,18 @@
 .bg-auth{
     background-image: url('./assets/images/login/login2.png');
 }
+
+.bg-error-1{
+    background-image: url('./assets//images/error/404.jpg.png');
+    background-repeat: no-repeat;
+}
+
+.bg-error{
+    background-image: url('./assets/images/error/sm-404.png');
+    background-repeat: no-repeat;
+}
+
+.bg-error-2{
+    background-image: url("./assets/images/error/404-404.png");
+    background-repeat: no-repeat;
+}

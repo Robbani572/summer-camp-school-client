@@ -4,6 +4,9 @@ import Home from '../pages/Home/Home/Home';
 import Login from '../pages/Authentication/Login/Login';
 import Register from '../pages/Authentication/Register/Register';
 import AuthLayout from '../Layoutes/AuthLayout';
+import Dashboard from '../Layoutes/Dashboard';
+import MyCourses from '../pages/Dashboard/StudentDashboard/MyCourses/MyCourses';
+import ErrorPage from '../pages/ErrorPage/ErrorPage';
 
 const router = createBrowserRouter([
     {
@@ -14,6 +17,10 @@ const router = createBrowserRouter([
                 path: "/",
                 element: <Home></Home>
             },
+            {
+                path: "*",
+                element: <ErrorPage></ErrorPage>
+            }
 
         ]
     },
@@ -28,6 +35,16 @@ const router = createBrowserRouter([
             {
                 path: 'register',
                 element: <Register></Register>
+            }
+        ]
+    },
+    {
+        path: "dashboard",
+        element: <Dashboard></Dashboard>,
+        children: [
+            {
+                path: 'myCourses',
+                element: <MyCourses></MyCourses>
             }
         ]
     }

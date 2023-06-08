@@ -1,13 +1,16 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProvider";
+import { BsGoogle } from 'react-icons/bs';
+import Swal from "sweetalert2";
 
 
 
 
 const Register = () => {
 
-    const {createUser, updateUser} = useContext(AuthContext)
+    const { createUser, updateUser, loginUserWithGoogle } = useContext(AuthContext)
+    const navigate = useNavigate()
 
     const handleRegister = event => {
         event.preventDefault()
@@ -22,14 +25,49 @@ const Register = () => {
         console.log(name, email, photo, confirm, password)
 
         createUser(email, password)
-        .then(result => {
-            const createdUser = result.user;
-            console.log(createdUser)
-            updateUser(name, photo)
-            .then(() => {})
+            .then(result => {
+                const createdUser = result.user;
+                console.log(createdUser)
+                const seveUser = {
+                    name,
+                    email,
+                    role: 'student',
+                }
+                updateUser(name, photo)
+                    .then(() => {
+                        fetch('http://localhost:5000/users', {
+                            method: 'POST',
+                            headers: {
+                                'content-type': 'application/json'
+                            },
+                            body: JSON.stringify(seveUser)
+                        })
+                            .then(res => res.json())
+                            .then(data => {
+                                console.log(data)
+                                Swal.fire({
+                                    position: 'top-end',
+                                    icon: 'success',
+                                    title: 'Your account has created successfuly',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                  })
+                                  navigate('/')
+
+                            })
+                    })
+                    .catch(error => console.log(error))
+            })
             .catch(error => console.log(error))
-        })
-        .catch(error => console.log(error))
+    }
+
+    const handleGoogleLogin = () => {
+        loginUserWithGoogle()
+            .then(result => {
+                const newUser = result.user;
+                console.log(newUser)
+            })
+            .catch(error => { console.log(error) })
     }
 
     return (
@@ -67,7 +105,13 @@ const Register = () => {
                         </div>
                     </form>
                     <div className="text-center my-4">
-                        <p className="font-semibold">Already have an account? <Link to='/auth/login' className="hover:underline text-blue-600">Login</Link></p>
+                        <p className="font-semibold text-white">Already have an account? <Link to='/auth/login' className="hover:underline text-blue-600">Login</Link></p>
+                    </div>
+                    <div className="divider text-white">OR</div>
+                    <div className="text-center">
+                        <button onClick={handleGoogleLogin} className="btn btn-circle btn-lg btn-outline text-white">
+                            <BsGoogle></BsGoogle>
+                        </button>
                     </div>
                 </div>
             </div>

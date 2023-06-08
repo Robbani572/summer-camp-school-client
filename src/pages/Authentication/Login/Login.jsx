@@ -1,12 +1,13 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProvider";
+import { BsGoogle } from 'react-icons/bs';
 
 
 
 const Login = () => {
 
-    const {loginUser} = useContext(AuthContext)
+    const {loginUser, loginUserWithGoogle } = useContext(AuthContext)
 
     const handleLogin = event => {
         event.preventDefault()
@@ -21,6 +22,15 @@ const Login = () => {
         .then(result => {
             const loggedUser = result.user;
             console.log(loggedUser)
+        })
+        .catch(error => {console.log(error)})
+    }
+
+    const handleGoogleLogin = () => {
+        loginUserWithGoogle()
+        .then(result => {
+            const newUser = result.user;
+            console.log(newUser)
         })
         .catch(error => {console.log(error)})
     }
@@ -47,6 +57,12 @@ const Login = () => {
                     </form>
                     <div className="text-center">
                         <p className="font-semibold">Don't have an account? <Link to='/auth/register' className="hover:underline text-blue-600">Register</Link></p>
+                    </div>
+                    <div className="divider text-white">OR</div>
+                    <div className="text-center">
+                        <button onClick={handleGoogleLogin} className="btn btn-circle btn-lg btn-outline text-white">
+                            <BsGoogle></BsGoogle>
+                        </button>
                     </div>
                 </div>
             </div>

@@ -4,22 +4,32 @@ import logo from "../../../assets/images/icons/navLogo.png"
 // import Sun from "./Sun.svg";
 // import Moon from "./Moon.svg";
 import "./navbar.css"
+import { useContext } from "react";
+import { AuthContext } from "../../../providers/AuthProvider";
 
 const NavBar = () => {
 
+    const {user, logOutUser} = useContext(AuthContext)
+
+    const handleLogOut = () => {
+        logOutUser()
+    }
+
+    
+
     const setDarkMode = () => {
-        document.querySelector("body").setAttribute("data-theme",  "dark")
+        document.querySelector("body").setAttribute("data-theme", "dark")
     }
     const setLightMode = () => {
-        document.querySelector("body").setAttribute("data-theme",  "light")
+        document.querySelector("body").setAttribute("data-theme", "light")
     }
 
 
     const toggleTheme = (e) => {
-        if(e.target.checked) {
+        if (e.target.checked) {
             setDarkMode()
         }
-        else{
+        else {
             setLightMode()
         }
     }
@@ -27,6 +37,7 @@ const NavBar = () => {
 
     const navItems = <>
         <li className="hover:text-[#BB8506] hover:bg-transparent font-semibold md:text-xl uppercase"><Link to="/">Home</Link></li>
+        <li className="hover:text-[#BB8506] hover:bg-transparent font-semibold md:text-xl uppercase"><Link to="/dashboard">Dashboard</Link></li>
         <li className="hover:text-[#BB8506] hover:bg-transparent font-semibold md:text-xl uppercase"><Link to="/courses">Courses</Link></li>
         <li className="hover:text-[#BB8506] hover:bg-transparent font-semibold md:text-xl uppercase"><Link to="/about">About</Link></li>
     </>
@@ -52,7 +63,14 @@ const NavBar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <Link to='/auth/login'><button className="btn">Login</button></Link>
+                {
+                    user ? <div className="flex gap-2 justify-center items-center">
+                        <img className="w-12 h-12 rounded-full" src={user.photoURL} alt="" />
+                        <Link ><button onClick={handleLogOut} className="btn">Log out</button></Link>
+                    </div> :
+                    <Link to='/auth/login'><button className="btn">Login</button></Link>
+                }
+
 
                 {/* dark mode and light mode */}
                 <div className='dark_mode'>

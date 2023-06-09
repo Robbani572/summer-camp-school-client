@@ -7,6 +7,8 @@ import AuthLayout from '../Layoutes/AuthLayout';
 import Dashboard from '../Layoutes/Dashboard';
 import MyCourses from '../pages/Dashboard/StudentDashboard/MyCourses/MyCourses';
 import ErrorPage from '../pages/ErrorPage/ErrorPage';
+import PrivetRoute from './PrivetRoute';
+import Courses from '../pages/Courses/Courses';
 
 const router = createBrowserRouter([
     {
@@ -16,6 +18,10 @@ const router = createBrowserRouter([
             {
                 path: "/",
                 element: <Home></Home>
+            },
+            {
+                path: "courses/:category",
+                element: <Courses></Courses>
             },
             {
                 path: "*",
@@ -40,7 +46,7 @@ const router = createBrowserRouter([
     },
     {
         path: "dashboard",
-        element: <Dashboard></Dashboard>,
+        element: <PrivetRoute><Dashboard></Dashboard></PrivetRoute>,
         children: [
             {
                 path: 'myCourses',

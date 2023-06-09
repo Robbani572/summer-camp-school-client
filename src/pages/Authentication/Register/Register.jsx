@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProvider";
 import { BsGoogle } from 'react-icons/bs';
 import Swal from "sweetalert2";
@@ -11,6 +11,9 @@ const Register = () => {
 
     const { createUser, updateUser, loginUserWithGoogle } = useContext(AuthContext)
     const navigate = useNavigate()
+    const location = useLocation()
+    const from = location.state?.from?.pathname || '/';
+    console.log(location)
 
     const handleRegister = event => {
         event.preventDefault()
@@ -51,9 +54,8 @@ const Register = () => {
                                     title: 'Your account has created successfuly',
                                     showConfirmButton: false,
                                     timer: 1500
-                                  })
-                                  navigate('/')
-
+                                })
+                                navigate(from, { replace: true })
                             })
                     })
                     .catch(error => console.log(error))
@@ -66,6 +68,31 @@ const Register = () => {
             .then(result => {
                 const newUser = result.user;
                 console.log(newUser)
+                const seveUser = {
+                    name: newUser.displayName,
+                    email: newUser.email,
+                    role: 'student',
+                }
+
+                fetch('http://localhost:5000/users', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(seveUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data)
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'Your account has created successfuly',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                        navigate(from, { replace: true })
+                    })
             })
             .catch(error => { console.log(error) })
     }

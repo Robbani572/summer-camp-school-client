@@ -38,7 +38,7 @@ const NavBar = () => {
     const navItems = <>
         <li className="hover:text-[#BB8506] hover:bg-transparent font-semibold md:text-xl uppercase"><Link to="/">Home</Link></li>
         <li className="hover:text-[#BB8506] hover:bg-transparent font-semibold md:text-xl uppercase"><Link to="/dashboard">Dashboard</Link></li>
-        <li className="hover:text-[#BB8506] hover:bg-transparent font-semibold md:text-xl uppercase"><Link to="/courses">Courses</Link></li>
+        <li className="hover:text-[#BB8506] hover:bg-transparent font-semibold md:text-xl uppercase"><Link to="/courses/popular">Courses</Link></li>
         <li className="hover:text-[#BB8506] hover:bg-transparent font-semibold md:text-xl uppercase"><Link to="/about">About</Link></li>
     </>
 

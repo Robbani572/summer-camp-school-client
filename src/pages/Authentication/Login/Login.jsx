@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProvider";
 import { BsGoogle } from 'react-icons/bs';
 
@@ -8,6 +8,10 @@ import { BsGoogle } from 'react-icons/bs';
 const Login = () => {
 
     const {loginUser, loginUserWithGoogle } = useContext(AuthContext)
+    const navigate = useNavigate()
+    const location = useLocation()
+    const from = location.state?.from?.pathname || '/';
+    console.log(location)
 
     const handleLogin = event => {
         event.preventDefault()
@@ -22,6 +26,7 @@ const Login = () => {
         .then(result => {
             const loggedUser = result.user;
             console.log(loggedUser)
+            navigate(from, {replace: true})
         })
         .catch(error => {console.log(error)})
     }
@@ -31,6 +36,7 @@ const Login = () => {
         .then(result => {
             const newUser = result.user;
             console.log(newUser)
+            navigate(from, {replace: true})
         })
         .catch(error => {console.log(error)})
     }

@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import useCart from "../../../hooks/useCart/useCart";
 
 
 const CourseCard = ({ item }) => {
@@ -9,6 +10,7 @@ const CourseCard = ({ item }) => {
     const { user } = useContext(AuthContext);
     const navigate = useNavigate()
     const { _id, courseName, instructor, price, details, availableSeats, enrolledStudents, image } = item
+    const [, refetch] = useCart()
 
     const addClass = {
         itemId: _id,
@@ -44,6 +46,7 @@ const CourseCard = ({ item }) => {
                           no-repeat
                         `
                         })
+                        refetch()
                     }
                 })
         }

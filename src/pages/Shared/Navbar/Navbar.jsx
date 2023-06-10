@@ -6,16 +6,20 @@ import logo from "../../../assets/images/icons/navLogo.png"
 import "./navbar.css"
 import { useContext } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
+import useCart from "../../../hooks/useCart/useCart";
+
+
 
 const NavBar = () => {
 
-    const {user, logOutUser} = useContext(AuthContext)
+    const { user, logOutUser } = useContext(AuthContext)
+    const [cart, refetch] = useCart()
 
     const handleLogOut = () => {
         logOutUser()
     }
 
-    
+
 
     const setDarkMode = () => {
         document.querySelector("body").setAttribute("data-theme", "dark")
@@ -36,10 +40,18 @@ const NavBar = () => {
 
 
     const navItems = <>
-        <li className="hover:text-[#BB8506] hover:bg-transparent font-semibold md:text-xl uppercase"><Link to="/">Home</Link></li>
-        <li className="hover:text-[#BB8506] hover:bg-transparent font-semibold md:text-xl uppercase"><Link to="/dashboard">Dashboard</Link></li>
-        <li className="hover:text-[#BB8506] hover:bg-transparent font-semibold md:text-xl uppercase"><Link to="/courses/popular">Courses</Link></li>
-        <li className="hover:text-[#BB8506] hover:bg-transparent font-semibold md:text-xl uppercase"><Link to="/about">About</Link></li>
+        <li className="hover:text-[#DCFDFF] hover:bg-transparent font-semibold md:text-xl uppercase"><Link to="/">Home</Link></li>
+        <li>
+            <Link to="/dashboard/myCourses">
+                <button className="hover:text-[#DCFDFF] font-semibold md:text-xl uppercase flex gap-2">
+                    My classes
+                    <div className="badge bg-[#DCFDFF]">+{cart?.length || 0}</div>
+                </button>
+            </Link>
+        </li>
+        <li className="hover:text-[#DCFDFF] hover:bg-transparent font-semibold md:text-xl uppercase"><Link to="/courses/painting">Courses</Link></li>
+        <li className="hover:text-[#DCFDFF] hover:bg-transparent font-semibold md:text-xl uppercase"><Link to="/instractor">Instractors</Link></li>
+        <li className="hover:text-[#DCFDFF] hover:bg-transparent font-semibold md:text-xl uppercase"><Link to="/about">About</Link></li>
     </>
 
     return (
@@ -68,7 +80,7 @@ const NavBar = () => {
                         <img className="w-12 h-12 rounded-full" src={user.photoURL} alt="" />
                         <Link ><button onClick={handleLogOut} className="btn">Log out</button></Link>
                     </div> :
-                    <Link to='/auth/login'><button className="btn">Login</button></Link>
+                        <Link to='/auth/login'><button className="btn">Login</button></Link>
                 }
 
 

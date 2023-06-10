@@ -50,7 +50,7 @@ const router = createBrowserRouter([
         children: [
             {
                 path: 'myCourses',
-                element: <MyCourses></MyCourses>
+                element: <PrivetRoute><MyCourses></MyCourses></PrivetRoute>
             }
         ]
     }

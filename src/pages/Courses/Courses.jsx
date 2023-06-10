@@ -15,7 +15,7 @@ const Courses = () => {
     // const [tabIndex, setTabIndex] = useState(initialIndex);
 
 
-    const popular = courses.filter(item => item.category === 'Popular');
+    // const popular = courses.filter(item => item.category === 'Popular');
     const painting = courses.filter(item => item.category === 'Painting');
     const drawing = courses.filter(item => item.category === 'Drawing');
     const sculpture = courses.filter(item => item.category === 'Sculpture');
@@ -28,15 +28,15 @@ const Courses = () => {
         >
 
             <TabList className="flex justify-center items-center md:gap-8 md:p-8 mb-8 gap-4">
-                <Tab className="md:text-2xl text-sm md:font-bold font-light cursor-pointer text-center uppercase">Popular</Tab>
+                {/* <Tab className="md:text-2xl text-sm md:font-bold font-light cursor-pointer text-center uppercase">Popular</Tab> */}
                 <Tab className="md:text-2xl text-sm md:font-bold font-light cursor-pointer text-center uppercase">Painting</Tab>
                 <Tab className="md:text-2xl text-sm md:font-bold font-light cursor-pointer text-center uppercase">Drawing</Tab>
                 <Tab className="md:text-2xl text-sm md:font-bold font-light cursor-pointer text-center uppercase">Sculpture</Tab>
             </TabList>
 
-            <TabPanel>
+            {/* <TabPanel>
                 <CoursesTab courses={popular}></CoursesTab>
-            </TabPanel>
+            </TabPanel> */}
 
             <TabPanel>
                 <CoursesTab courses={painting}></CoursesTab>

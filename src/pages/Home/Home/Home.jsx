@@ -1,4 +1,4 @@
-import Courses from "../Courses/Courses";
+import PopularCourses from "../Courses/PopularCourses";
 import HeroSection from "../HeroSection/HeroSection";
 
 
@@ -8,7 +8,7 @@ const Home = () => {
         <div className="">
             <HeroSection></HeroSection>
             <div className="max-w-screen-xl mx-auto">
-            <Courses></Courses>
+                <PopularCourses></PopularCourses>
             </div>
         </div>
     );

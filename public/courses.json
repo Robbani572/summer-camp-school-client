@@ -2,6 +2,7 @@
     {
       "courseName": "Introduction to Watercolor Painting",
       "category": "Painting",
+      "availableSeats": 250,
       "instructor": "Jhon Smith",
       "details": "Learn the basics of watercolor painting techniques and create beautiful landscapes and still life compositions.",
       "rating": 4.5,
@@ -12,6 +13,7 @@
     {
       "courseName": "Charcoal Portraits Masterclass",
       "category": "Drawing",
+      "availableSeats": 201,
       "instructor": "Emily Jhonson",
       "details": "Discover the art of creating realistic charcoal portraits with a focus on shading, proportions, and capturing expressions.",
       "rating": 4.8,
@@ -22,6 +24,7 @@
     {
       "courseName": "Sculpting with Clay",
       "category": "Sculpture",
+      "availableSeats": 300,
       "instructor": "Michel Brown",
       "details": "Unleash your creativity by sculpting unique forms using clay and learn techniques such as coiling, slab construction, and sculpting tools.",
       "rating": 4.2,
@@ -32,6 +35,7 @@
     {
       "courseName": "Beginner's Guide to Acrylic Painting",
       "category": "Painting",
+      "availableSeats": 100,
       "instructor": "Jhon Smith",
       "details": "Discover the versatility of acrylic paints and create vibrant artworks using different techniques and color mixing.",
       "rating": 4.7,
@@ -42,6 +46,7 @@
     {
       "courseName": "Figure Drawing Fundamentals",
       "category": "Drawing",
+      "availableSeats": 95,
       "instructor": "Emily Jhonson",
       "details": "Master the art of drawing human figures with a focus on proportions, anatomy, and capturing dynamic poses.",
       "rating": 4.6,
@@ -52,6 +57,7 @@
     {
       "courseName": "Ceramic Pottery Techniques",
       "category": "Sculpture",
+      "availableSeats": 165,
       "instructor": "Michel Brown",
       "details": "Explore the art of ceramic pottery by learning hand-building techniques, glazing, and firing processes.",
       "rating": 4.4,
@@ -62,6 +68,7 @@
     {
       "courseName": "Knitting for Beginners",
       "category": "Drawing",
+      "availableSeats": 195,
       "instructor": "Emily Jhonson",
       "details": "Learn the basics of knitting, from casting on to creating various stitch patterns and knitting your own projects.",
       "rating": 4.3,
@@ -72,6 +79,7 @@
     {
       "courseName": "Advanced Watercolor Techniques",
       "category": "Painting",
+      "availableSeats": 175,
       "instructor": "Jhon Smith",
       "details": "Take your watercolor painting skills to the next level with advanced techniques, such as wet-on-wet, glazing, and color theory.",
       "rating": 4.2,
@@ -82,6 +90,7 @@
     {
       "courseName": "Pen and Ink Drawing Workshop",
       "category": "Drawing",
+      "availableSeats": 145,
       "instructor": "Emily Jhonson",
       "details": "Learn the art of pen and ink drawing by exploring different line techniques, cross-hatching, and creating detailed illustrations.",
       "rating": 4.7,
@@ -92,6 +101,7 @@
     {
       "courseName": "Stone Sculpture: From Concept to Creation",
       "category": "Sculpture",
+      "availableSeats": 122,
       "instructor": "Michel Brown",
       "details": "Discover the beauty of stone sculpture and learn the process of transforming raw stone into a finished artwork.",
       "rating": 4.5,
@@ -102,6 +112,7 @@
     {
       "courseName": "Mixed Media Collage Art",
       "category": "Painting",
+      "availableSeats": 125,
       "instructor": "Jhon Smith",
       "details": "Explore the world of mixed media collage art and learn how to combine various materials and techniques to create stunning artworks.",
       "rating": 4.6,
@@ -112,6 +123,7 @@
     {
       "courseName": "Portrait Drawing: Capturing Likeness",
       "category": "Drawing",
+      "availableSeats": 144,
       "instructor": "Emily Jhonson",
       "details": "Master the art of portrait drawing by focusing on capturing the likeness, facial features, and expressions of your subjects.",
       "rating": 4.8,
@@ -122,6 +134,7 @@
     {
       "courseName": "Abstract Sculpture Workshop",
       "category": "Sculpture",
+      "availableSeats": 188,
       "instructor": "Michel Brown",
       "details": "Learn the techniques and concepts behind abstract sculpture and create unique and expressive three-dimensional artworks.",
       "rating": 4.4,
@@ -132,6 +145,7 @@
     {
       "courseName": "Color Theory for Painters",
       "category": "Painting",
+      "availableSeats": 200,
       "instructor": "Jhon Smith",
       "details": "Deepen your understanding of color theory and learn how to effectively use color in your paintings to create mood and impact.",
       "rating": 4.3,
@@ -142,6 +156,7 @@
     {
       "courseName": "Perspective Drawing Mastery",
       "category": "Drawing",
+      "availableSeats": 200,
       "instructor": "Emily Jhonson",
       "details": "Master the art of perspective drawing and learn how to create realistic three-dimensional scenes and objects.",
       "rating": 4.7,
@@ -152,6 +167,7 @@
     {
       "courseName": "Wire Sculpture: Creating Dynamic Forms",
       "category": "Sculpture",
+      "availableSeats": 200,
       "instructor": "Michel Brown",
       "details": "Explore the art of wire sculpture and learn how to create dynamic and intricate forms using various wire manipulation techniques.",
       "rating": 4.5,
@@ -162,6 +178,7 @@
     {
       "courseName": "Impressionistic Landscape Painting",
       "category": "Painting",
+      "availableSeats": 200,
       "instructor": "Jhon Smith",
       "details": "Discover the beauty of impressionistic landscape painting and learn how to capture light, color, and atmosphere in your artworks.",
       "rating": 4.6,
@@ -172,6 +189,7 @@
     {
       "courseName": "Ink Wash Painting: East Asian Art",
       "category": "Drawing",
+      "availableSeats": 200,
       "instructor": "Emily Jhonson",
       "details": "Immerse yourself in the traditional art of East Asian ink wash painting and learn the techniques to create serene and expressive artworks.",
       "rating": 4.4,
@@ -182,6 +200,7 @@
     {
       "courseName": "Wood Carving: From Basics to Masterpieces",
       "category": "Sculpture",
+      "availableSeats": 200,
       "instructor": "Michel Brown",
       "details": "Learn the art of wood carving and progress from basic carving techniques to creating intricate masterpieces with depth and detail.",
       "rating": 4.2,
@@ -192,6 +211,7 @@
     {
       "courseName": "Palette Knife Painting Techniques",
       "category": "Painting",
+      "availableSeats": 200,
       "instructor": "Jhon Smith",
       "details": "Explore the expressive and textural possibilities of palette knife painting and create bold and vibrant artworks.",
       "rating": 4.7,
@@ -202,6 +222,7 @@
     {
       "courseName": "Realistic Animal Drawing",
       "category": "Drawing",
+      "availableSeats": 200,
       "instructor": "Emily Jhonson",
       "details": "Master the art of drawing realistic animals, from capturing fur and feathers to depicting accurate anatomy and lifelike textures.",
       "rating": 4.6,
@@ -212,6 +233,7 @@
     {
       "courseName": "Bronze Sculpture: Casting and Patination",
       "category": "Sculpture",
+      "availableSeats": 200,
       "instructor": "Michel Brown",
       "details": "Learn the process of bronze sculpture, from creating a clay model to casting and applying patina to achieve stunning finishes.",
       "rating": 4.3,
@@ -222,6 +244,7 @@
     {
       "courseName": "Expressive Abstract Painting",
       "category": "Painting",
+      "availableSeats": 200,
       "instructor": "Jhon Smith",
       "details": "Discover the freedom of expressive abstract painting and learn how to convey emotions and create impactful artworks.",
       "rating": 4.5,
@@ -232,6 +255,7 @@
     {
       "courseName": "Inking and Coloring Comics",
       "category": "Drawing",
+      "availableSeats": 200,
       "instructor": "Emily Jhonson",
       "details": "Learn the techniques of inking and coloring comics to bring your illustrations to life and create captivating visual narratives.",
       "rating": 4.8,
@@ -242,6 +266,7 @@
     {
       "courseName": "Wireframe Sculpture: Geometric Abstractions",
       "category": "Sculpture",
+      "availableSeats": 200,
       "instructor": "Michel Brown",
       "details": "Explore the world of wireframe sculpture and create geometric abstractions using wire manipulation and structural techniques.",
       "rating": 4.4,
@@ -252,6 +277,7 @@
     {
       "courseName": "Urban Sketching: Capturing City Life",
       "category": "Painting",
+      "availableSeats": 200,
       "instructor": "Jhon Smith",
       "details": "Learn the art of urban sketching and capture the energy and atmosphere of the city through quick sketches and on-location drawings.",
       "rating": 4.6,
@@ -262,6 +288,7 @@
     {
       "courseName": "Ink Illustration: From Concept to Finished Artwork",
       "category": "Drawing",
+      "availableSeats": 200,
       "instructor": "Emily Jhonson",
       "details": "Master the art of ink illustration and learn how to create detailed and captivating artworks from initial concept to finished piece.",
       "rating": 4.5,
@@ -272,6 +299,7 @@
     {
       "courseName": "Wire Jewelry Making",
       "category": "Sculpture",
+      "availableSeats": 200,
       "instructor": "Michel Brown",
       "details": "Explore the art of wire jewelry making and learn how to create intricate and unique pieces using wire wrapping and shaping techniques.",
       "rating": 4.3,
@@ -282,6 +310,7 @@
     {
       "courseName": "Palette Color Mixing for Painters",
       "category": "Painting",
+      "availableSeats": 200,
       "instructor": "Jhon Smith",
       "details": "Deepen your understanding of color mixing and create harmonious and vibrant palettes for your paintings.",
       "rating": 4.7,
@@ -292,6 +321,7 @@
     {
       "courseName": "Character Design for Animation",
       "category": "Drawing",
+      "availableSeats": 200,
       "instructor": "Emily Jhonson",
       "details": "Learn the principles of character design for animation and create compelling and visually appealing characters for various mediums.",
       "rating": 4.6,
@@ -302,6 +332,7 @@
     {
       "courseName": "Clay Modeling: Animals and Creatures",
       "category": "Sculpture",
+      "availableSeats": 200,
       "instructor": "Michel Brown",
       "details": "Explore the art of clay modeling and create realistic and imaginative animals and creatures using sculpting techniques.",
       "rating": 4.4,
@@ -312,6 +343,7 @@
     {
       "courseName": "Watercolor Landscape Painting",
       "category": "Painting",
+      "availableSeats": 200,
       "instructor": "Jhon Smith",
       "details": "Discover the beauty of painting landscapes in watercolor and learn how to capture the essence of nature with transparency and luminosity.",
       "rating": 4.2,
@@ -322,6 +354,7 @@
     {
       "courseName": "Pen and Ink Illustration Techniques",
       "category": "Drawing",
+      "availableSeats": 200,
       "instructor": "Emily Jhonson",
       "details": "Master the art of pen and ink illustration by exploring different techniques, textures, and creating intricate and detailed artworks.",
       "rating": 4.7,
@@ -332,6 +365,7 @@
     {
       "courseName": "Abstract Sculpture: Exploring Form and Space",
       "category": "Sculpture",
+      "availableSeats": 200,
       "instructor": "Michel Brown",
       "details": "Explore the world of abstract sculpture and experiment with form, space, and materials to create visually striking three-dimensional artworks.",
       "rating": 4.5,
@@ -342,6 +376,7 @@
     {
       "courseName": "Botanical Illustration",
       "category": "Painting",
+      "availableSeats": 200,
       "instructor": "Jhon Smith",
       "details": "Learn the art of botanical illustration and capture the beauty and intricacy of plants through detailed and realistic drawings.",
       "rating": 4.3,
@@ -352,6 +387,7 @@
     {
       "courseName": "Portrait Painting: Beyond Realism",
       "category": "Drawing",
+      "availableSeats": 200,
       "instructor": "Emily Jhonson",
       "details": "Expand your portrait painting skills by exploring different styles and techniques to create expressive and emotive portrait artworks.",
       "rating": 4.8,
@@ -362,6 +398,7 @@
     {
       "courseName": "Metal Sculpture: Welding and Fabrication",
       "category": "Sculpture",
+      "availableSeats": 200,
       "instructor": "Michel Brown",
       "details": "Learn the art of metal sculpture by mastering welding and fabrication techniques to create unique and durable metal artworks.",
       "rating": 4.6,
@@ -372,6 +409,7 @@
     {
       "courseName": "Abstract Expressionism",
       "category": "Painting",
+      "availableSeats": 200,
       "instructor": "Jhon Smith",
       "details": "Dive into the world of abstract expressionism and explore spontaneous, gestural, and emotionally charged painting techniques.",
       "rating": 4.4,
@@ -382,6 +420,7 @@
     {
       "courseName": "Digital Illustration: From Sketch to Final Artwork",
       "category": "Drawing",
+      "availableSeats": 200,
       "instructor": "Emily Jhonson",
       "details": "Master the art of digital illustration and learn how to create stunning artwork from initial sketch to final polished piece.",
       "rating": 4.7,
@@ -392,6 +431,7 @@
     {
       "courseName": "Clay Sculpture: Human Anatomy",
       "category": "Sculpture",
+      "availableSeats": 200,
       "instructor": "Michel Brown",
       "details": "Learn the fundamentals of clay sculpture by studying the human anatomy and creating realistic and expressive figurative artworks.",
       "rating": 4.5,

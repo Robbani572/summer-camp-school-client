@@ -8,7 +8,6 @@ const PrivetRoute = ({children}) => {
 
     const {user, loading} = useContext(AuthContext)
     const location = useLocation()
-    console.log(location)
 
     if(loading){
         return <LoadingPage></LoadingPage>

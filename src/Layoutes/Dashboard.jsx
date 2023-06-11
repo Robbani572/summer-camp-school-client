@@ -1,18 +1,32 @@
+import { useContext, useEffect, useState } from "react";
 import { NavLink, Outlet } from "react-router-dom";
+import { AuthContext } from "../providers/AuthProvider";
+import useCurrentUser from "../hooks/useCurrentUser/useCurrentUser";
 
 
 const Dashboard = () => {
 
-    const admin = true;
-    const instractor = false
-    const student = false
+    const {user} = useContext(AuthContext)
+    const [currentUser] = useCurrentUser()
+
+    // useEffect(() => {
+    //     fetch(`http://localhost:5000/user?email=${user?.email}`)
+    //     .then(res => res.json())
+    //     .then(data => {
+    //         console.log(data)
+    //         setCurrentUser(data)
+    //     })
+        
+    // }, [user])
+
+
 
     return (
         <div className="drawer lg:drawer-open">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content flex flex-col items-center justify-center">
                 {/* Page content here */}
-                <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
+                <label htmlFor="my-drawer-2" className="btn drawer-button lg:hidden">Open Menu</label>
                 <Outlet></Outlet>
 
             </div>
@@ -22,19 +36,20 @@ const Dashboard = () => {
                     {/* Sidebar content here */}
 
                     {
-                        admin && <>
+                        currentUser?.role === 'admin' && <>
                             <li className="text-xl font-semibold text-black uppercase"><NavLink to="/dashboard/allUsers">All users</NavLink></li>
+                            <li className="text-xl font-semibold text-black uppercase"><NavLink to="/dashboard/myCourses">Selected Classes</NavLink></li>
                         </>
                     }
 
                     {
-                        instractor && <>
+                        currentUser?.role === 'instractor' && <>
                             <li className="text-xl font-semibold text-black uppercase"><NavLink to="/dashboard/addClass">Add Class</NavLink></li>
                         </>
                     }
 
                     {
-                        student && <>
+                        currentUser?.role === 'student' && <>
                             <li className="text-xl font-semibold text-black uppercase"><NavLink to="/dashboard/myCourses">My Courses</NavLink></li>
                         </>
                     }

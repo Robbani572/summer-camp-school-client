@@ -2,16 +2,16 @@ import { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProvider";
 import { BsGoogle } from 'react-icons/bs';
+import Swal from "sweetalert2";
 
 
 
 const Login = () => {
 
-    const {loginUser, loginUserWithGoogle } = useContext(AuthContext)
+    const { loginUser, loginUserWithGoogle } = useContext(AuthContext)
     const navigate = useNavigate()
     const location = useLocation()
     const from = location.state?.from?.pathname || '/';
-    console.log(location)
 
     const handleLogin = event => {
         event.preventDefault()
@@ -23,30 +23,64 @@ const Login = () => {
         console.log(email, password)
 
         loginUser(email, password)
-        .then(result => {
-            const loggedUser = result.user;
-            console.log(loggedUser)
-            navigate(from, {replace: true})
-        })
-        .catch(error => {console.log(error)})
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser)
+                navigate(from, { replace: true })
+            })
+            .catch(error => { console.log(error) })
     }
 
     const handleGoogleLogin = () => {
         loginUserWithGoogle()
-        .then(result => {
-            const newUser = result.user;
-            console.log(newUser)
-            navigate(from, {replace: true})
-        })
-        .catch(error => {console.log(error)})
+            .then(result => {
+                const newUser = result.user;
+                console.log(newUser)
+                const seveUser = {
+                    name: newUser.displayName,
+                    email: newUser.email,
+                    role: 'student',
+                }
+
+                fetch('http://localhost:5000/users', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(seveUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data)
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'Your account has created successfuly',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                        navigate(from, { replace: true })
+                    })
+            })
+            .catch(error => { console.log(error) })
     }
+
+    // const handleGoogleLogin = () => {
+    //     loginUserWithGoogle()
+    //     .then(result => {
+    //         const newUser = result.user;
+    //         console.log(newUser)
+    //         navigate(from, {replace: true})
+    //     })
+    //     .catch(error => {console.log(error)})
+    // }
 
 
     return (
         <div className="hero bg-auth min-h-screen">
             <div className="hero-content bg-auth w-3/4 md:w-1/2 shadow-2xl">
                 <div className="w-full">
-                <h1 className="text-3xl md:text-5xl text-center font-bold md:my-8 ">Login now!</h1>
+                    <h1 className="text-3xl md:text-5xl text-center font-bold md:my-8 ">Login now!</h1>
                     <form onSubmit={handleLogin} className="card-body">
                         <div className="form-control">
                             <input type="text" name="email" placeholder="email" className="input input-bordered bg-opacity-60 text-xl font-semibold border-0 border-b-2 rounded-none focus:outline-0" />

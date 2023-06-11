@@ -7,14 +7,16 @@ import "./navbar.css"
 import { useContext } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
 import useCart from "../../../hooks/useCart/useCart";
+import useCurrentUser from "../../../hooks/useCurrentUser/useCurrentUser";
 
 
 
 const NavBar = () => {
 
     const { user, logOutUser } = useContext(AuthContext)
-    const [cart, refetch] = useCart()
-    
+    const [cart,] = useCart()
+    const [currentUser] = useCurrentUser()
+
 
     const handleLogOut = () => {
         logOutUser()
@@ -43,10 +45,28 @@ const NavBar = () => {
     const navItems = <>
         <li className="hover:text-[#DCFDFF] hover:bg-transparent font-semibold md:text-xl uppercase"><Link to="/">Home</Link></li>
         <li className="hover:text-[#DCFDFF] hover:bg-transparent font-semibold md:text-xl uppercase"><Link to="/courses/painting">Courses</Link></li>
-        <li className="hover:text-[#DCFDFF] hover:bg-transparent font-semibold md:text-xl uppercase"><Link to="/instractor">Instractors</Link></li>
-        <li className="hover:text-[#DCFDFF] hover:bg-transparent font-semibold md:text-xl uppercase"><Link to="/dashboard/allUsers">All Users</Link></li>
         {
-            user && <li>
+            currentUser?.role === 'instructor' && <li className="hover:text-[#DCFDFF] hover:bg-transparent font-semibold md:text-xl uppercase">
+                <Link to="/instractor">Instractors</Link>
+            </li>
+        }
+        {
+            currentUser?.role === 'admin' && <>
+                <li className="hover:text-[#DCFDFF] hover:bg-transparent font-semibold md:text-xl uppercase">
+                    <Link to="/dashboard/allUsers">All Users</Link>
+                </li>
+                <li>
+                    <Link to="/dashboard/myCourses">
+                        <button className="hover:text-[#DCFDFF] font-semibold md:text-xl uppercase flex gap-2">
+                            My classes
+                            <div className="badge bg-[#DCFDFF]">+{cart?.length || 0}</div>
+                        </button>
+                    </Link>
+                </li>
+            </>
+        }
+        {
+            currentUser?.role === 'student' && <li>
                 <Link to="/dashboard/myCourses">
                     <button className="hover:text-[#DCFDFF] font-semibold md:text-xl uppercase flex gap-2">
                         My classes

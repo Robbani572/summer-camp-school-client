@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../useAxiosSecure/useAxiosSecure";
 
 
 const useUser = () => {
     const [users, setUsers] = useState([])
     const [loading, setLoading] = useState(true)
+    const [axiosSecure] = useAxiosSecure()
 
     const handleMakeAdmin = user => {
 
@@ -94,13 +96,12 @@ const useUser = () => {
     }
 
     useEffect(() => {
-        fetch('http://localhost:5000/users')
-            .then(res => res.json())
+        axiosSecure.get('/users')
             .then(data => {
-                setUsers(data)
+                setUsers(data.data)
                 setLoading(false)
             })
-    }, [])
+    }, [axiosSecure])
 
     return [users, loading, handleMakeAdmin, handleMakeInstructor];
 };

@@ -51,11 +51,11 @@ const router = createBrowserRouter([
         children: [
             {
                 path: 'myCourses',
-                element: <PrivetRoute><MyCourses></MyCourses></PrivetRoute>
+                element: <MyCourses></MyCourses>
             },
             {
                 path: 'allUsers',
-                element: <PrivetRoute><AllUsers></AllUsers></PrivetRoute>
+                element: <AllUsers></AllUsers>
             }
         ]
     }

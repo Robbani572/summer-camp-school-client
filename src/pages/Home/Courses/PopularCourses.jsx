@@ -5,13 +5,11 @@ import CourseCard from "./CourseCard";
 const PopularCourses = () => {
 
     const [courses, setCourses] = useState([])
-    console.log(courses)
 
     useEffect(() => {
         fetch('http://localhost:5000/courses')
             .then(res => res.json())
             .then(data => {
-                console.log(data)
                 const popularCourses = data.slice(0, 6)
                 setCourses(popularCourses)
             })
@@ -21,7 +19,6 @@ const PopularCourses = () => {
         fetch('http://localhost:5000/courses')
             .then(res => res.json())
             .then(data => {
-                console.log(data)
                 const popularCourses = data.slice(0, 6)
                 setCourses(popularCourses)
             })
@@ -31,7 +28,6 @@ const PopularCourses = () => {
         fetch('http://localhost:5000/courses')
             .then(res => res.json())
             .then(data => {
-                console.log(data)
                 setCourses(data)
             })
     }

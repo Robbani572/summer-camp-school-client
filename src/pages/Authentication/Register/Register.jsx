@@ -13,7 +13,6 @@ const Register = () => {
     const navigate = useNavigate()
     const location = useLocation()
     const from = location.state?.from?.pathname || '/';
-    console.log(location)
 
     const handleRegister = event => {
         event.preventDefault()

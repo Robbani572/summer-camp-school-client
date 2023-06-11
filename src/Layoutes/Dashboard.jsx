@@ -2,6 +2,11 @@ import { NavLink, Outlet } from "react-router-dom";
 
 
 const Dashboard = () => {
+
+    const admin = true;
+    const instractor = false
+    const student = false
+
     return (
         <div className="drawer lg:drawer-open">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -15,7 +20,24 @@ const Dashboard = () => {
                 <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                 <ul className="menu p-4 w-80 h-full bg-[#DCFDFF] text-base-content">
                     {/* Sidebar content here */}
-                    <li className="text-xl font-semibold text-black uppercase"><NavLink to="/dashboard/myCourses">My Courses</NavLink></li>
+
+                    {
+                        admin && <>
+                            <li className="text-xl font-semibold text-black uppercase"><NavLink to="/dashboard/allUsers">All users</NavLink></li>
+                        </>
+                    }
+
+                    {
+                        instractor && <>
+                            <li className="text-xl font-semibold text-black uppercase"><NavLink to="/dashboard/addClass">Add Class</NavLink></li>
+                        </>
+                    }
+
+                    {
+                        student && <>
+                            <li className="text-xl font-semibold text-black uppercase"><NavLink to="/dashboard/myCourses">My Courses</NavLink></li>
+                        </>
+                    }
 
                     <div className="divider"></div>
 

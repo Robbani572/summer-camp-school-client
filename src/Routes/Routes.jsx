@@ -9,6 +9,7 @@ import MyCourses from '../pages/Dashboard/StudentDashboard/MyCourses/MyCourses';
 import ErrorPage from '../pages/ErrorPage/ErrorPage';
 import PrivetRoute from './PrivetRoute';
 import Courses from '../pages/Courses/Courses';
+import AllUsers from '../pages/Dashboard/AdminDashboard/AllUsers/AllUsers';
 
 const router = createBrowserRouter([
     {
@@ -51,6 +52,10 @@ const router = createBrowserRouter([
             {
                 path: 'myCourses',
                 element: <PrivetRoute><MyCourses></MyCourses></PrivetRoute>
+            },
+            {
+                path: 'allUsers',
+                element: <PrivetRoute><AllUsers></AllUsers></PrivetRoute>
             }
         ]
     }

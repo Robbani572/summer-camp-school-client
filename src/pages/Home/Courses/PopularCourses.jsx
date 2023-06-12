@@ -46,7 +46,7 @@ const PopularCourses = () => {
 
             <div className="flex justify-center items-center mt-10">
                 {
-                    courses.length < 7 ? <button onClick={handleLoadFullData} className="btn">Show More</button> :
+                    courses.length < 7 ? <button onClick={handleLoadFullData} className="btn">Show All</button> :
                     <button onClick={handleLoadData} className="btn">Show less</button>
                 }
             </div>

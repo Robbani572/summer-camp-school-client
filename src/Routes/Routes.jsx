@@ -10,6 +10,7 @@ import ErrorPage from '../pages/ErrorPage/ErrorPage';
 import PrivetRoute from './PrivetRoute';
 import Courses from '../pages/Courses/Courses';
 import AllUsers from '../pages/Dashboard/AdminDashboard/AllUsers/AllUsers';
+import AdminRoutes from './AdminRoutes';
 
 const router = createBrowserRouter([
     {
@@ -49,10 +50,16 @@ const router = createBrowserRouter([
         path: "dashboard",
         element: <PrivetRoute><Dashboard></Dashboard></PrivetRoute>,
         children: [
+
+            //user dashboar routes
             {
                 path: 'myCourses',
                 element: <MyCourses></MyCourses>
             },
+            
+            //instractor dashboard routes
+
+            //admin dashboard routes
             {
                 path: 'allUsers',
                 element: <AllUsers></AllUsers>

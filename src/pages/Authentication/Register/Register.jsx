@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProvider";
 import { BsGoogle } from 'react-icons/bs';
@@ -13,6 +13,7 @@ const Register = () => {
     const navigate = useNavigate()
     const location = useLocation()
     const from = location.state?.from?.pathname || '/';
+    const [error, setError] = useState('')
 
     const handleRegister = event => {
         event.preventDefault()
@@ -25,6 +26,11 @@ const Register = () => {
         const password = form.password.value;
 
         console.log(name, email, photo, confirm, password)
+
+        if(confirm !== password){
+            setError("Password doesn't match")
+            return
+        }
 
         createUser(email, password)
             .then(result => {
@@ -57,9 +63,9 @@ const Register = () => {
                                 navigate(from, { replace: true })
                             })
                     })
-                    .catch(error => console.log(error))
+                    .catch(error => setError(error.message))
             })
-            .catch(error => console.log(error))
+            .catch(error => setError(error.message))
     }
 
     const handleGoogleLogin = () => {
@@ -93,7 +99,7 @@ const Register = () => {
                         navigate(from, { replace: true })
                     })
             })
-            .catch(error => { console.log(error) })
+            .catch(error => { setError(error.message) })
     }
 
     return (
@@ -104,24 +110,24 @@ const Register = () => {
                     <form onSubmit={handleRegister} className="card-body">
                         <div className="flex flex-col md:flex-row gap-4">
                             <div className="form-control md:w-1/2">
-                                <input type="text" name="name" placeholder="name" className="input input-bordered bg-opacity-60 text-xl font-semibold border-0 border-b-2 rounded-none focus:outline-0" />
+                                <input type="text" name="name" placeholder="name" required className="input input-bordered bg-opacity-60 text-xl font-semibold border-0 border-b-2 rounded-none focus:outline-0" />
                             </div>
                             <div className="form-control md:w-1/2 mt-8 md:mt-0">
-                                <input type="email" name="email" placeholder="email" className="input input-bordered bg-opacity-60 text-xl font-semibold border-0 border-b-2 rounded-none focus:outline-0" />
+                                <input type="email" name="email" placeholder="email" required className="input input-bordered bg-opacity-60 text-xl font-semibold border-0 border-b-2 rounded-none focus:outline-0" />
                             </div>
                         </div>
                         <div className="form-control mt-8">
-                            <input type="text" name="photo" placeholder="photo url" className="input input-bordered bg-opacity-60 text-xl font-semibold border-0 border-b-2 rounded-none focus:outline-0" />
+                            <input type="text" name="photo" placeholder="photo url" required className="input input-bordered bg-opacity-60 text-xl font-semibold border-0 border-b-2 rounded-none focus:outline-0" />
 
                         </div>
 
                         <div className="flex flex-col md:flex-row md:mt-8 gap-4">
                             <div className="form-control md:w-1/2 mt-8 md:mt-0">
-                                <input type="password" name="password" placeholder="password" className="input input-bordered bg-opacity-60 text-xl font-semibold border-0 border-b-2 rounded-none focus:outline-0" />
+                                <input type="password" name="password" placeholder="password" required className="input input-bordered bg-opacity-60 text-xl font-semibold border-0 border-b-2 rounded-none focus:outline-0" />
 
                             </div>
                             <div className="form-control md:w-1/2 mt-8 md:mt-0">
-                                <input type="password" name="confirm" placeholder="confirm password" className="input input-bordered bg-opacity-60 text-xl font-semibold border-0 border-b-2 rounded-none focus:outline-0" />
+                                <input type="password" name="confirm" placeholder="confirm password" required className="input input-bordered bg-opacity-60 text-xl font-semibold border-0 border-b-2 rounded-none focus:outline-0" />
 
                             </div>
                         </div>
@@ -132,6 +138,11 @@ const Register = () => {
                     </form>
                     <div className="text-center my-4">
                         <p className="font-semibold text-white">Already have an account? <Link to='/auth/login' className="hover:underline text-blue-600">Login</Link></p>
+                    </div>
+                    <div className="text-center my-4">
+                        {
+                            error !== '' && <p className="font-semibold text-red-600">!{error}</p>
+                        }
                     </div>
                     <div className="divider text-white">OR</div>
                     <div className="text-center">

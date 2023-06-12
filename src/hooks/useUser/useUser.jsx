@@ -40,10 +40,9 @@ const useUser = () => {
                                 'He is an admin now',
                                 'success'
                             )
-                            fetch('http://localhost:5000/users')
-                                .then(res => res.json())
+                            axiosSecure.get('/users')
                                 .then(data => {
-                                    setUsers(data)
+                                    setUsers(data.data)
                                     setLoading(false)
                                 })
                         }
@@ -83,10 +82,10 @@ const useUser = () => {
                                 'He is instructor now',
                                 'success'
                             )
-                            fetch('http://localhost:5000/users')
-                                .then(res => res.json())
+
+                            axiosSecure.get('/users')
                                 .then(data => {
-                                    setUsers(data)
+                                    setUsers(data.data)
                                     setLoading(false)
                                 })
                         }

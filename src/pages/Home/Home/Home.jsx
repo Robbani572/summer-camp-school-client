@@ -1,5 +1,6 @@
 import PopularCourses from "../Courses/PopularCourses";
 import HeroSection from "../HeroSection/HeroSection";
+import TopInstructors from "../TopInstructors/TopInstructors";
 
 
 
@@ -9,6 +10,9 @@ const Home = () => {
             <HeroSection></HeroSection>
             <div className="max-w-screen-xl mx-auto">
                 <PopularCourses></PopularCourses>
+            </div>
+            <div className="max-w-screen-xl mx-auto">
+                <TopInstructors></TopInstructors>
             </div>
         </div>
     );

@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProvider";
 import { BsGoogle } from 'react-icons/bs';
@@ -12,6 +12,7 @@ const Login = () => {
     const navigate = useNavigate()
     const location = useLocation()
     const from = location.state?.from?.pathname || '/';
+    const [error, setError] = useState('')
 
     const handleLogin = event => {
         event.preventDefault()
@@ -28,7 +29,7 @@ const Login = () => {
                 console.log(loggedUser)
                 navigate(from, { replace: true })
             })
-            .catch(error => { console.log(error) })
+            .catch(error => { setError(error.message) })
     }
 
     const handleGoogleLogin = () => {
@@ -62,7 +63,7 @@ const Login = () => {
                         navigate(from, { replace: true })
                     })
             })
-            .catch(error => { console.log(error) })
+            .catch(error => { setError(error.message) })
     }
 
     // const handleGoogleLogin = () => {
@@ -83,10 +84,10 @@ const Login = () => {
                     <h1 className="text-3xl md:text-5xl text-center font-bold md:my-8 ">Login now!</h1>
                     <form onSubmit={handleLogin} className="card-body">
                         <div className="form-control">
-                            <input type="text" name="email" placeholder="email" className="input input-bordered bg-opacity-60 text-xl font-semibold border-0 border-b-2 rounded-none focus:outline-0" />
+                            <input type="text" name="email" placeholder="email" required className="input input-bordered bg-opacity-60 text-xl font-semibold border-0 border-b-2 rounded-none focus:outline-0" />
                         </div>
                         <div className="form-control mt-8">
-                            <input type="password" name="password" placeholder="password" className="input input-bordered bg-opacity-60 text-xl font-semibold border-0 border-b-2 rounded-none focus:outline-0" />
+                            <input type="password" name="password" placeholder="password" required className="input input-bordered bg-opacity-60 text-xl font-semibold border-0 border-b-2 rounded-none focus:outline-0" />
                             <label className="label">
                                 <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                             </label>
@@ -97,6 +98,11 @@ const Login = () => {
                     </form>
                     <div className="text-center">
                         <p className="font-semibold">Don't have an account? <Link to='/auth/register' className="hover:underline text-blue-600">Register</Link></p>
+                    </div>
+                    <div className="text-center">
+                        {
+                            error !== '' && <p className="font-semibold">!{error}</p>
+                        }
                     </div>
                     <div className="divider text-white">OR</div>
                     <div className="text-center">

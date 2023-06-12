@@ -2,6 +2,7 @@ import { Helmet } from "react-helmet-async";
 import useCart from "../../../../hooks/useCart/useCart";
 import { BsFillTrash3Fill } from "react-icons/bs";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 
 const MyCourses = () => {
@@ -34,9 +35,9 @@ const MyCourses = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                    fetch(`http://localhost:5000/carts/${id}`, {
-                        method: 'DELETE'
-                    })
+                fetch(`http://localhost:5000/carts/${id}`, {
+                    method: 'DELETE'
+                })
                     .then(res => res.json())
                     .then(data => {
                         console.log(data)
@@ -104,7 +105,9 @@ const MyCourses = () => {
                                     <div className="text-xl font-semibold">${cart.price}</div>
                                 </td>
                                 <th>
-                                    <button className="btn">Pay</button>
+                                    <Link to="/dashboard/payment">
+                                        <button className="btn">Pay</button>
+                                    </Link>
                                 </th>
                                 <th>
                                     <button onClick={() => handleDelete(cart._id)} className="btn bg-red-600 text-white btn-lg btn-circle"><BsFillTrash3Fill></BsFillTrash3Fill></button>

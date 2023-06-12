@@ -11,6 +11,7 @@ import PrivetRoute from './PrivetRoute';
 import Courses from '../pages/Courses/Courses';
 import AllUsers from '../pages/Dashboard/AdminDashboard/AllUsers/AllUsers';
 import AdminRoutes from './AdminRoutes';
+import Payment from '../pages/Dashboard/StudentDashboard/Payment/Payment';
 
 const router = createBrowserRouter([
     {
@@ -55,6 +56,10 @@ const router = createBrowserRouter([
             {
                 path: 'myCourses',
                 element: <MyCourses></MyCourses>
+            },
+            {
+                path: 'payment',
+                element: <Payment></Payment>
             },
             
             //instractor dashboard routes

@@ -1,20 +1,23 @@
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import CheckoutForm from "./CheckoutForm";
+import { useLoaderData } from "react-router-dom";
 
 
 const stripePromise = loadStripe(import.meta.env.VITE_Payment_Gateway_PK)
 
 const Payment = () => {
+
+    const cart = useLoaderData()
+
     return (
         <div className="">
-            <h2 className="text-5xl font-bold">Teka o teka tumi uira uira aso</h2>
+            <h2 className="text-5xl font-bold mb-20">Teka o teka tumi uira uira aso: {cart.courseName}</h2>
 
-            <div className="mt-20">
+            
             <Elements stripe={stripePromise}>
-                <CheckoutForm></CheckoutForm>
+                <CheckoutForm cart={cart}></CheckoutForm>
             </Elements>
-            </div>
 
         </div>
     );

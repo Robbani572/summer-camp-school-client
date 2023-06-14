@@ -32,8 +32,8 @@ const AddClass = () => {
             instructor,
             rating,
             image,
-            availableSeats,
-            enrolledStudents,
+            availableSeats: parseFloat(availableSeats),
+            enrolledStudents: parseFloat(enrolledStudents),
             price,
             details,
             status: 'pending'

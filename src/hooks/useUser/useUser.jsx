@@ -16,7 +16,7 @@ const useUser = () => {
 
         Swal.fire({
             title: 'Are you sure?',
-            text: "Do you want to make him Admin!",
+            text: `Do you want to make ${user.name} Admin!`,
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
@@ -37,7 +37,7 @@ const useUser = () => {
                         if (data.modifiedCount > 0) {
                             Swal.fire(
                                 'Congrats!',
-                                'He is an admin now',
+                                `${user.name} is an admin now`,
                                 'success'
                             )
                             axiosSecure.get('/users')
@@ -58,7 +58,7 @@ const useUser = () => {
 
         Swal.fire({
             title: 'Are you sure?',
-            text: "Do you want to make him Instructor!",
+            text: `Do you want to make ${user.name} Instructor!`,
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
@@ -79,7 +79,7 @@ const useUser = () => {
                         if (data.modifiedCount > 0) {
                             Swal.fire(
                                 'Congrats!',
-                                'He is instructor now',
+                                `${user.name} is an instructor now`,
                                 'success'
                             )
 

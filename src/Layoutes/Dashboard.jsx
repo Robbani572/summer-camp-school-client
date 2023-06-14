@@ -50,6 +50,11 @@ const Dashboard = () => {
                                     <ImUsers></ImUsers> All users
                                 </NavLink>
                             </li>
+                            <li className="text-xl font-semibold text-black uppercase">
+                                <NavLink to="/dashboard/allClasses">
+                                    <ImUsers></ImUsers> All Classes
+                                </NavLink>
+                            </li>
                             {/* TODO: testing purpose urls */}
                             <li className="text-xl font-semibold text-black uppercase">
                                 <NavLink to="/dashboard/myCourses">

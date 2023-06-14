@@ -3,10 +3,14 @@ import { useContext, useEffect, useState } from "react";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure/useAxiosSecure";
 import { AuthContext } from "../../../../providers/AuthProvider";
 import './CheckoutForm.css'
+import usePayments from "../../../../hooks/usePayments/usePayments";
+import useCart from "../../../../hooks/useCart/useCart";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 
 
-const CheckoutForm = ({ cart }) => {
+const CheckoutForm = ({ cart, confirmRefetch }) => {
 
     const stripe = useStripe();
     const elements = useElements();
@@ -17,6 +21,8 @@ const CheckoutForm = ({ cart }) => {
     const [processing, setProcessing] = useState(false)
     const [transactionId, setTransactionId] = useState('')
     const [success, setSuccess] = useState('')
+    const [, refetch] = usePayments()
+    const navigate = useNavigate()
 
     const { price } = cart
     const amount = parseFloat(price);
@@ -65,18 +71,18 @@ const CheckoutForm = ({ cart }) => {
 
         setProcessing(true)
 
-        const {paymentIntent, error: confirmError} = await stripe.confirmCardPayment(
+        const { paymentIntent, error: confirmError } = await stripe.confirmCardPayment(
             clientSecret,
             {
-              payment_method: {
-                card: card,
-                billing_details: {
-                  name: user.displayName || 'anonymus',
-                  email: user.email || 'unknown'
+                payment_method: {
+                    card: card,
+                    billing_details: {
+                        name: user.displayName || 'anonymus',
+                        email: user.email || 'unknown'
+                    },
                 },
-              },
             },
-          );
+        );
 
         if (confirmError) {
             console.log(confirmError)
@@ -86,7 +92,7 @@ const CheckoutForm = ({ cart }) => {
 
         setProcessing(false)
 
-        if(paymentIntent.status === 'succeeded'){
+        if (paymentIntent.status === 'succeeded') {
             //TODO: next steps
             setTransactionId(paymentIntent.id)
             setSuccess(paymentIntent.id)
@@ -95,6 +101,7 @@ const CheckoutForm = ({ cart }) => {
                 user: user.email,
                 transactionId: paymentIntent.id,
                 amount,
+                date: new Date(),
                 selectedCalss: cart.itemId,
                 cartItem: cart._id,
                 status: 'paid',
@@ -102,12 +109,23 @@ const CheckoutForm = ({ cart }) => {
                 courseName: cart.courseName
             }
             axiosSecure.post('/payments', payment)
-            .then(res => {
-                console.log(res.data)
-                if(res.data.insertedId){
-                    // display consfirm
-                }
-            })
+                .then(res => {
+                    console.log(res.data)
+                    console.log(res.data)
+                    if (res.data.insertResult.insertedId || res.data.deleteResult.deletedCount) {
+                        // display consfirm
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'Your work has been saved',
+                            showConfirmButton: false,
+                            timer: 1500
+                          })
+                        refetch()
+                        confirmRefetch()
+                        navigate('/dashboard/enrolledClasses')
+                    }
+                })
         }
     }
 

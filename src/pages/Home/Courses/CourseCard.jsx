@@ -12,6 +12,7 @@ const CourseCard = ({ item }) => {
     const { _id, courseName, instructor, price, details, availableSeats, enrolledStudents, image } = item
     const [, refetch] = useCart()
 
+
     const addClass = {
         itemId: _id,
         courseName,
@@ -59,15 +60,16 @@ const CourseCard = ({ item }) => {
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
                 confirmButtonText: 'Login Now'
-              }).then(() => {
+            }).then(() => {
                 navigate('/auth/login')
-              })
-              
+            })
+
         }
     }
 
     return (
-        <div className="card col h-[650px] bg-base-200 md:bg-white rounded-none hover:shadow-xl transition">
+        <div className={availableSeats == 0 ? 'card col h-[650px] bg-red-600 rounded-none hover:shadow-xl transition' :
+            'card col h-[650px] bg-base-200 md:bg-white rounded-none hover:shadow-xl transition'}>
             <figure className="p-2"><img className="w-full rounded" src={image} alt="Arts and Crafts" /></figure>
             <div className="card-body relative w-full">
                 <div>
@@ -82,7 +84,7 @@ const CourseCard = ({ item }) => {
                     <p className="font-semibold">Enrolled students: {enrolledStudents}</p>
                 </div>
                 <div className="card-actions justify-center mt-2 absolute bottom-0 w-5/6 mb-4">
-                    <button onClick={() => handleSelectToCart(item)} className="btn btn-outline border-4 font-semibold w-full border-[#DCFDFF]">select</button>
+                    <button onClick={() => handleSelectToCart(item)} disabled={availableSeats == 0} className="btn btn-outline border-4 font-semibold w-full border-[#DCFDFF]">select</button>
                 </div>
             </div>
             <div className="absolute mt-6 p-2 rounded right-0 mr-4 bg-black">

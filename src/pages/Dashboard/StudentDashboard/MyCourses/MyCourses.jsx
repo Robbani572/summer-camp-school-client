@@ -9,20 +9,6 @@ const MyCourses = () => {
     const [carts, refetch] = useCart()
 
     const handleDelete = (id) => {
-        // const procced = confirm('Are you sure? You want to delete')
-        // if(procced){
-        //     fetch(`http://localhost:5000/carts/${id}`, {
-        //         method: 'DELETE'
-        //     })
-        //     .then(res => res.json())
-        //     .then(data => {
-        //         console.log(data)
-        //         if (data.deletedCount > 0) {
-        //             alert('item deleted')
-        //             refetch()
-        //         }
-        //     })
-        // }
         Swal.fire({
             title: 'Are you sure?',
             text: "Do you want to delete this one!",

@@ -71,10 +71,10 @@ const NavBar = () => {
             currentUser?.role === 'student' && <>
                 <li>
                     <Link to="/dashboard/myCourses">
-                        <button className="hover:text-[#DCFDFF] font-semibold md:text-xl uppercase flex gap-2">
+                        <span className="hover:text-[#DCFDFF] font-semibold md:text-xl uppercase flex gap-2">
                             My classes
                             <div className="badge bg-[#DCFDFF]">+{cart?.length || 0}</div>
-                        </button>
+                        </span>
                     </Link>
                 </li>
                 <li className="hover:text-[#DCFDFF] hover:bg-transparent font-semibold md:text-xl uppercase">

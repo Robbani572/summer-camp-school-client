@@ -14,6 +14,7 @@ import AdminRoutes from './AdminRoutes';
 import Payment from '../pages/Dashboard/StudentDashboard/Payment/Payment';
 import AddClass from '../pages/Dashboard/InstructorDashboard/AddClass/AddClass';
 import MyClasses from '../pages/Dashboard/InstructorDashboard/MyClasses/MyClasses';
+import EnrolledClasses from '../pages/Dashboard/StudentDashboard/EnrolledClasses/EnrolledClasses';
 
 const router = createBrowserRouter([
     {
@@ -63,6 +64,10 @@ const router = createBrowserRouter([
                 path: 'payment/:id',
                 element: <Payment></Payment>,
                 loader: ({params}) => fetch(`http://localhost:5000/carts/${params.id}`)
+            },
+            {
+                path: 'enrolledClasses',
+                element: <EnrolledClasses></EnrolledClasses>
             },
             
             //instractor dashboard routes

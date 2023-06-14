@@ -1,15 +1,44 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
-import { useState } from "react";
-import useCartForPayment from "../../../../hooks/useCartForPayment/useCartForPayment";
+import { useContext, useEffect, useState } from "react";
+import useAxiosSecure from "../../../../hooks/useAxiosSecure/useAxiosSecure";
+import { AuthContext } from "../../../../providers/AuthProvider";
 
 
-const CheckoutForm = () => {
+
+const CheckoutForm = ({ cart }) => {
 
     const stripe = useStripe();
     const elements = useElements();
     const [cardError, setCardError] = useState('')
-    const [selectedItem] = useCartForPayment()
-    console.log(selectedItem)
+    const [axiosSecure] = useAxiosSecure()
+    const [clientSecret, setClientSecret] = useState('')
+    const { user } = useContext(AuthContext)
+
+    const { price } = cart
+    console.log(price)
+
+
+    // TODO: axiosSecure related problem: access token not sending in proper way
+    useEffect(() => {
+        axiosSecure.post(`/create-payment-intent`, { price })
+            .then(res => {
+                console.log(price)
+                console.log(res.data.clientSecret)
+                setClientSecret(res.data.clientSecret)
+            })
+
+        // fetch('http://localhost:5000/create-payment-intent', {
+        //     method: 'POST',
+        //     headers: {
+        //         'content-type':'application/json'
+        //     },
+        //     body: JSON.stringify({price})
+        // }).then(res => res.json()).then(data => console.log(data))
+    }, [price, axiosSecure])
+
+
+
+
 
     const handleSubmit = async (event) => {
         event.preventDefault()
@@ -35,6 +64,25 @@ const CheckoutForm = () => {
             setCardError('')
             console.log('payment method', paymentMethod)
         }
+
+        const {paymentIntent, error: confirmError} = await stripe.confirmCardPayment(
+            clientSecret,
+            {
+              payment_method: {
+                card: card,
+                billing_details: {
+                  name: user.displayName || 'anonymus',
+                  email: user.email || 'unknown'
+                },
+              },
+            },
+          );
+
+        if (confirmError) {
+            console.log(confirmError)
+        }
+
+        console.log(paymentIntent)
     }
 
     return (
@@ -56,12 +104,12 @@ const CheckoutForm = () => {
                         },
                     }}
                 />
-                <button className="btn mt-8" type="submit" disabled={!stripe}>
+                <button className="btn mt-8" type="submit" disabled={!stripe || !clientSecret}>
                     Pay
                 </button>
             </form>
             <div className="mt-8">
-                    {cardError && <p className="text-red-600 font-semibold">!Error: {cardError}</p>}
+                {cardError && <p className="text-red-600 font-semibold">!Error: {cardError}</p>}
             </div>
         </div>
     );

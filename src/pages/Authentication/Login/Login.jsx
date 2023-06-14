@@ -84,7 +84,7 @@ const Login = () => {
                     <h1 className="text-3xl md:text-5xl text-center font-bold md:my-8 ">Login now!</h1>
                     <form onSubmit={handleLogin} className="card-body">
                         <div className="form-control">
-                            <input type="text" name="email" placeholder="email" required className="input input-bordered bg-opacity-60 text-xl font-semibold border-0 border-b-2 rounded-none focus:outline-0" />
+                            <input type="email" name="email" placeholder="email" required className="input input-bordered bg-opacity-60 text-xl font-semibold border-0 border-b-2 rounded-none focus:outline-0" />
                         </div>
                         <div className="form-control mt-8">
                             <input type="password" name="password" placeholder="password" required className="input input-bordered bg-opacity-60 text-xl font-semibold border-0 border-b-2 rounded-none focus:outline-0" />

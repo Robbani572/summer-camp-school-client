@@ -4,7 +4,7 @@ import CheckoutForm from "./CheckoutForm";
 import { useLoaderData } from "react-router-dom";
 
 
-const stripePromise = loadStripe(import.meta.env.VITE_Payment_Gateway_PK)
+const stripePromise = loadStripe(import.meta.env.VITE_payment_gateway_pk)
 
 const Payment = () => {
 
@@ -12,7 +12,7 @@ const Payment = () => {
 
     return (
         <div className="">
-            <h2 className="text-5xl font-bold mb-20">Teka o teka tumi uira uira aso: {cart.courseName}</h2>
+            <h2 className="text-5xl font-bold mb-20">Payment amount: {cart.price}</h2>
 
             
             <Elements stripe={stripePromise}>

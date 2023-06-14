@@ -43,7 +43,7 @@ const Dashboard = () => {
                     }
 
                     {
-                        currentUser?.role === 'instractor' && <>
+                        currentUser?.role === 'instructor' && <>
                             <li className="text-xl font-semibold text-black uppercase"><NavLink to="/dashboard/addClass">Add Class</NavLink></li>
                         </>
                     }

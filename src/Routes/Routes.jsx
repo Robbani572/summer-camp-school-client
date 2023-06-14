@@ -12,6 +12,7 @@ import Courses from '../pages/Courses/Courses';
 import AllUsers from '../pages/Dashboard/AdminDashboard/AllUsers/AllUsers';
 import AdminRoutes from './AdminRoutes';
 import Payment from '../pages/Dashboard/StudentDashboard/Payment/Payment';
+import AddClass from '../pages/Dashboard/InstructorDashboard/AddClass/AddClass';
 
 const router = createBrowserRouter([
     {
@@ -64,6 +65,10 @@ const router = createBrowserRouter([
             },
             
             //instractor dashboard routes
+            {
+                path: 'addClass',
+                element: <AddClass></AddClass>
+            },
 
             //admin dashboard routes
             {

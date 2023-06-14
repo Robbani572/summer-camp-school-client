@@ -13,6 +13,7 @@ import AllUsers from '../pages/Dashboard/AdminDashboard/AllUsers/AllUsers';
 import AdminRoutes from './AdminRoutes';
 import Payment from '../pages/Dashboard/StudentDashboard/Payment/Payment';
 import AddClass from '../pages/Dashboard/InstructorDashboard/AddClass/AddClass';
+import MyClasses from '../pages/Dashboard/InstructorDashboard/MyClasses/MyClasses';
 
 const router = createBrowserRouter([
     {
@@ -68,6 +69,10 @@ const router = createBrowserRouter([
             {
                 path: 'addClass',
                 element: <AddClass></AddClass>
+            },
+            {
+                path: 'myClasses',
+                element: <MyClasses></MyClasses>
             },
 
             //admin dashboard routes

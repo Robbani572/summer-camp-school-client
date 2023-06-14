@@ -59,10 +59,10 @@ const NavBar = () => {
                 </li>
                 <li>
                     <Link to="/dashboard/myCourses">
-                        <button className="hover:text-[#DCFDFF] font-semibold md:text-xl uppercase flex gap-2">
+                        <span className="hover:text-[#DCFDFF] font-semibold md:text-xl uppercase flex gap-2 bg-transparent hover:bg-transparent">
                             My classes
                             <div className="badge bg-[#DCFDFF]">+{cart?.length || 0}</div>
-                        </button>
+                        </span>
                     </Link>
                 </li>
             </>
@@ -96,7 +96,7 @@ const NavBar = () => {
                         {navItems}
                     </ul>
                 </div>
-                <Link className="btn btn-ghost normal-case text-xl">
+                <Link className="btn btn-ghost normal-case text-xl hidden md:block lg:block">
                     <img className="w-full h-full" src={logo} alt="" />
                 </Link>
             </div>

@@ -2,6 +2,7 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useContext, useEffect, useState } from "react";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure/useAxiosSecure";
 import { AuthContext } from "../../../../providers/AuthProvider";
+import './CheckoutForm.css'
 
 
 
@@ -13,28 +14,24 @@ const CheckoutForm = ({ cart }) => {
     const [axiosSecure] = useAxiosSecure()
     const [clientSecret, setClientSecret] = useState('')
     const { user } = useContext(AuthContext)
+    const [processing, setProcessing] = useState(false)
+    const [transactionId, setTransactionId] = useState('')
+    const [success, setSuccess] = useState('')
 
     const { price } = cart
+    const amount = parseFloat(price);
     console.log(price)
 
 
     // TODO: axiosSecure related problem: access token not sending in proper way
     useEffect(() => {
-        axiosSecure.post(`/create-payment-intent`, { price })
+        axiosSecure.post(`/create-payment-intent`, { amount })
             .then(res => {
-                console.log(price)
+                console.log(amount)
                 console.log(res.data.clientSecret)
                 setClientSecret(res.data.clientSecret)
             })
-
-        // fetch('http://localhost:5000/create-payment-intent', {
-        //     method: 'POST',
-        //     headers: {
-        //         'content-type':'application/json'
-        //     },
-        //     body: JSON.stringify({price})
-        // }).then(res => res.json()).then(data => console.log(data))
-    }, [price, axiosSecure])
+    }, [amount, axiosSecure])
 
 
 
@@ -57,6 +54,7 @@ const CheckoutForm = ({ cart }) => {
         })
 
         if (error) {
+            setSuccess('')
             setCardError(error.message)
             console.log('error', error)
         }
@@ -64,6 +62,8 @@ const CheckoutForm = ({ cart }) => {
             setCardError('')
             console.log('payment method', paymentMethod)
         }
+
+        setProcessing(true)
 
         const {paymentIntent, error: confirmError} = await stripe.confirmCardPayment(
             clientSecret,
@@ -82,7 +82,33 @@ const CheckoutForm = ({ cart }) => {
             console.log(confirmError)
         }
 
-        console.log(paymentIntent)
+        console.log('paymentIntent is', paymentIntent)
+
+        setProcessing(false)
+
+        if(paymentIntent.status === 'succeeded'){
+            //TODO: next steps
+            setTransactionId(paymentIntent.id)
+            setSuccess(paymentIntent.id)
+
+            const payment = {
+                user: user.email,
+                transactionId: paymentIntent.id,
+                amount,
+                selectedCalss: cart.itemId,
+                cartItem: cart._id,
+                status: 'paid',
+                image: cart.image,
+                courseName: cart.courseName
+            }
+            axiosSecure.post('/payments', payment)
+            .then(res => {
+                console.log(res.data)
+                if(res.data.insertedId){
+                    // display consfirm
+                }
+            })
+        }
     }
 
     return (
@@ -104,12 +130,13 @@ const CheckoutForm = ({ cart }) => {
                         },
                     }}
                 />
-                <button className="btn mt-8" type="submit" disabled={!stripe || !clientSecret}>
+                <button className="btn mt-8" type="submit" disabled={!stripe || !clientSecret || processing}>
                     Pay
                 </button>
             </form>
             <div className="mt-8">
                 {cardError && <p className="text-red-600 font-semibold">!Error: {cardError}</p>}
+                {transactionId && <p className="text-green-600 font-semibold">Payment succesful with trnsc: {success}</p>}
             </div>
         </div>
     );

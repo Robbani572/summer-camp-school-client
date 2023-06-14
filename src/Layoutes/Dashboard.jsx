@@ -45,6 +45,7 @@ const Dashboard = () => {
                     {
                         currentUser?.role === 'instructor' && <>
                             <li className="text-xl font-semibold text-black uppercase"><NavLink to="/dashboard/addClass">Add Class</NavLink></li>
+                            <li className="text-xl font-semibold text-black uppercase"><NavLink to="/dashboard/myClasses">My Class</NavLink></li>
                         </>
                     }
 

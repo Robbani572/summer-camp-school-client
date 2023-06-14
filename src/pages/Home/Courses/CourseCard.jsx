@@ -67,9 +67,9 @@ const CourseCard = ({ item }) => {
     }
 
     return (
-        <div className="card col w-96 bg-base-200 md:bg-white rounded-none hover:shadow-xl transition relative">
+        <div className="card col h-[650px] bg-base-200 md:bg-white rounded-none hover:shadow-xl transition">
             <figure className="p-2"><img className="w-full rounded" src={image} alt="Arts and Crafts" /></figure>
-            <div className="card-body">
+            <div className="card-body relative w-full">
                 <div>
                     <h4 className="font-bold">{courseName}</h4>
                     <p className="text-gray-600 font-bold mt-2 uppercase">Instractor: {instructor}</p>
@@ -81,7 +81,7 @@ const CourseCard = ({ item }) => {
                     <p className="font-semibold">Available seats: {availableSeats}</p>
                     <p className="font-semibold">Enrolled students: {enrolledStudents}</p>
                 </div>
-                <div className="card-actions justify-center mt-2">
+                <div className="card-actions justify-center mt-2 absolute bottom-0 w-5/6 mb-4">
                     <button onClick={() => handleSelectToCart(item)} className="btn btn-outline border-4 font-semibold w-full border-[#DCFDFF]">select</button>
                 </div>
             </div>

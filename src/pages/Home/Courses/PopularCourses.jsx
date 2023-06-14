@@ -6,11 +6,14 @@ const PopularCourses = () => {
 
     const [courses, setCourses] = useState([])
 
+    const approvedCourses = courses.filter(item => item.status === 'approved')
+
     useEffect(() => {
         fetch('http://localhost:5000/courses')
             .then(res => res.json())
             .then(data => {
-                const popularCourses = data.slice(0, 6)
+                const approvedCourses = data.filter(item => item.status === 'approved')
+                const popularCourses = approvedCourses.slice(0, 6)
                 setCourses(popularCourses)
             })
     }, [])
@@ -19,7 +22,8 @@ const PopularCourses = () => {
         fetch('http://localhost:5000/courses')
             .then(res => res.json())
             .then(data => {
-                const popularCourses = data.slice(0, 6)
+                const approvedCourses = data.filter(item => item.status === 'approved')
+                const popularCourses = approvedCourses.slice(0, 6)
                 setCourses(popularCourses)
             })
     }
@@ -28,17 +32,18 @@ const PopularCourses = () => {
         fetch('http://localhost:5000/courses')
             .then(res => res.json())
             .then(data => {
-                setCourses(data)
+                const approvedCourses = data.filter(item => item.status === 'approved')
+                setCourses(approvedCourses)
             })
     }
 
     return (
         <div className="my-20 md:shadow-2xl md:py-4 md:px-8 md:bg-base-100">
             <div>
-                <h3 className="my-10 text-5xl font-bold text-center uppercase">Popular classes</h3>
+                <h3 className="my-10 text-3xl md:text-5xl font-bold text-center uppercase">Popular classes</h3>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 justify-center items-center gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 px-6 justify-center items-center gap-8">
                 {
                     courses.map(item => <CourseCard key={item._id} item={item}></CourseCard>)
                 }

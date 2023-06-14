@@ -20,3 +20,7 @@
     background-image: url("./assets/images/error/404-404.png");
     background-repeat: no-repeat;
 }
+
+.drawer-side a {
+    background-color: transparent;
+}

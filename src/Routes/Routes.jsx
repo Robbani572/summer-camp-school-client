@@ -10,13 +10,13 @@ import ErrorPage from '../pages/ErrorPage/ErrorPage';
 import PrivetRoute from './PrivetRoute';
 import Courses from '../pages/Courses/Courses';
 import AllUsers from '../pages/Dashboard/AdminDashboard/AllUsers/AllUsers';
-import AdminRoutes from './AdminRoutes';
 import Payment from '../pages/Dashboard/StudentDashboard/Payment/Payment';
 import AddClass from '../pages/Dashboard/InstructorDashboard/AddClass/AddClass';
 import MyClasses from '../pages/Dashboard/InstructorDashboard/MyClasses/MyClasses';
 import EnrolledClasses from '../pages/Dashboard/StudentDashboard/EnrolledClasses/EnrolledClasses';
 import AllClasses from '../pages/Dashboard/AdminDashboard/AllClasses/AllClasses';
 import Instructors from '../pages/Instructors/Instructors';
+import InstrcutorDetails from '../pages/InstructorDetails/InstrcutorDetails';
 
 const router = createBrowserRouter([
     {
@@ -34,6 +34,11 @@ const router = createBrowserRouter([
             {
                 path: 'instructors',
                 element: <Instructors></Instructors>
+            },
+            {
+                path: 'instructorDetails/:id',
+                element: <InstrcutorDetails></InstrcutorDetails>,
+                loader: ({params}) => fetch(`http://localhost:5000/instructors/${params.id}`)
             },
             {
                 path: "*",

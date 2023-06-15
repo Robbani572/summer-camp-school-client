@@ -24,7 +24,7 @@ const useUser = () => {
             confirmButtonText: 'Yes!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/users/${user._id}`, {
+                fetch(`https://artistry-moth-school-server.vercel.app/users/${user._id}`, {
                     method: 'PATCH',
                     headers: {
                         'content-type': 'application/json'
@@ -67,7 +67,7 @@ const useUser = () => {
             confirmButtonText: 'Yes!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/users/${user._id}`, {
+                fetch(`https://artistry-moth-school-server.vercel.app/users/${user._id}`, {
                     method: 'PATCH',
                     headers: {
                         'content-type': 'application/json'

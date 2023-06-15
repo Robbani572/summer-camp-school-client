@@ -29,7 +29,7 @@ const AllClasses = () => {
             confirmButtonText: 'Yes!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/courses/${singleClass._id}`, {
+                fetch(`https://artistry-moth-school-server.vercel.app/courses/${singleClass._id}`, {
                     method: 'PATCH',
                     headers: {
                         'content-type': 'application/json'
@@ -50,7 +50,7 @@ const AllClasses = () => {
                             //         setCourses(data.data)
                             //         setLoading(false)
                             //     })
-                            fetch('http://localhost:5000/courses')
+                            fetch('https://artistry-moth-school-server.vercel.app/courses')
                                 .then(res => res.json())
                                 .then(data => {
                                     setCourses(data)
@@ -77,7 +77,7 @@ const AllClasses = () => {
             confirmButtonText: 'Yes!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/courses/${singleClass._id}`, {
+                fetch(`https://artistry-moth-school-server.vercel.app/courses/${singleClass._id}`, {
                     method: 'PATCH',
                     headers: {
                         'content-type': 'application/json'
@@ -98,7 +98,7 @@ const AllClasses = () => {
                             //         setCourses(data.data)
                             //         setLoading(false)
                             //     })
-                            fetch('http://localhost:5000/courses')
+                            fetch('https://artistry-moth-school-server.vercel.app/courses')
                                 .then(res => res.json())
                                 .then(data => {
                                     setCourses(data)
@@ -125,7 +125,7 @@ const AllClasses = () => {
             confirmButtonText: 'Yes!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/courses/${singleClass._id}`, {
+                fetch(`https://artistry-moth-school-server.vercel.app/courses/${singleClass._id}`, {
                     method: 'PATCH',
                     headers: {
                         'content-type': 'application/json'
@@ -146,13 +146,13 @@ const AllClasses = () => {
                             //         setCourses(data.data)
                             //         setLoading(false)
                             //     })
-                            fetch('http://localhost:5000/courses')
+                            fetch('https://artistry-moth-school-server.vercel.app/courses')
                                 .then(res => res.json())
                                 .then(data => {
                                     setCourses(data)
                                     setLoading(false)
                                     Swal.fire({
-                                        title: 'Submit your Github username',
+                                        title: 'Write feedback',
                                         input: 'text',
                                         inputAttributes: {
                                             autocapitalize: 'off'
@@ -168,7 +168,7 @@ const AllClasses = () => {
                                     }).then((result) => {
                                         console.log(result.value)
                                         if (result.isConfirmed) {
-                                            fetch(`http://localhost:5000/courses/${singleClass._id}`, {
+                                            fetch(`https://artistry-moth-school-server.vercel.app/courses/${singleClass._id}`, {
                                                 method: 'PUT',
                                                 headers: {
                                                     'content-type': 'application/json'
@@ -198,7 +198,7 @@ const AllClasses = () => {
         //         setCourses(data.data)
         //         setLoading(false)
         //     })
-        fetch('http://localhost:5000/courses')
+        fetch('https://artistry-moth-school-server.vercel.app/courses')
             .then(res => res.json())
             .then(data => {
                 setCourses(data)

@@ -9,7 +9,7 @@ const PopularCourses = () => {
     const approvedCourses = courses.filter(item => item.status === 'approved')
 
     useEffect(() => {
-        fetch('http://localhost:5000/courses')
+        fetch('https://artistry-moth-school-server.vercel.app/courses')
             .then(res => res.json())
             .then(data => {
                 const approvedCourses = data.filter(item => item.status === 'approved')
@@ -19,7 +19,7 @@ const PopularCourses = () => {
     }, [])
 
     const handleLoadData = () => {
-        fetch('http://localhost:5000/courses')
+        fetch('https://artistry-moth-school-server.vercel.app/courses')
             .then(res => res.json())
             .then(data => {
                 const approvedCourses = data.filter(item => item.status === 'approved')
@@ -29,7 +29,7 @@ const PopularCourses = () => {
     }
 
     const handleLoadFullData = () => {
-        fetch('http://localhost:5000/courses')
+        fetch('https://artistry-moth-school-server.vercel.app/courses')
             .then(res => res.json())
             .then(data => {
                 const approvedCourses = data.filter(item => item.status === 'approved')

@@ -7,7 +7,7 @@ const useCourses = () => {
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-        fetch('http://localhost:5000/courses')
+        fetch('https://artistry-moth-school-server.vercel.app/courses')
         .then(res => res.json())
         .then(data => {
             setCourses(data)

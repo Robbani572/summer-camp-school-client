@@ -16,7 +16,7 @@ const StudentFeedback = () => {
     const [feedback, setFeedback] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:5000/feedback')
+        fetch('https://artistry-moth-school-server.vercel.app/feedback')
         .then(res => res.json())
         .then(data=> {
             console.log(data)

@@ -39,7 +39,7 @@ const router = createBrowserRouter([
             {
                 path: 'instructorDetails/:id',
                 element: <InstrcutorDetails></InstrcutorDetails>,
-                loader: ({params}) => fetch(`http://localhost:5000/instructors/${params.id}`)
+                loader: ({params}) => fetch(`https://artistry-moth-school-server.vercel.app/instructors/${params.id}`)
             },
             {
                 path: "*",
@@ -75,7 +75,7 @@ const router = createBrowserRouter([
             {
                 path: 'payment/:id',
                 element: <Payment></Payment>,
-                loader: ({params}) => fetch(`http://localhost:5000/carts/${params.id}`)
+                loader: ({params}) => fetch(`https://artistry-moth-school-server.vercel.app/carts/${params.id}`)
             },
             {
                 path: 'enrolledClasses',

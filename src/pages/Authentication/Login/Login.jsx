@@ -44,7 +44,7 @@ const Login = () => {
                     img: newUser.photoURL
                 }
 
-                fetch('http://localhost:5000/users', {
+                fetch('https://artistry-moth-school-server.vercel.app/users', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'

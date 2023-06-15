@@ -54,7 +54,7 @@ const Register = () => {
                 }
                 updateUser(name, photo)
                     .then(() => {
-                        fetch('http://localhost:5000/users', {
+                        fetch('https://artistry-moth-school-server.vercel.app/users', {
                             method: 'POST',
                             headers: {
                                 'content-type': 'application/json'
@@ -91,7 +91,7 @@ const Register = () => {
                     img: newUser.photoURL
                 }
 
-                fetch('http://localhost:5000/users', {
+                fetch('https://artistry-moth-school-server.vercel.app/users', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'

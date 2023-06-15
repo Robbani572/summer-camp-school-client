@@ -88,10 +88,10 @@ const Dashboard = () => {
                         <NavLink to="/"><div className="flex gap-2"><AiFillHome></AiFillHome> Home</div></NavLink>
                     </li>
                     <li className="text-xl font-semibold text-black hover:text-white uppercase">
-                        <NavLink to="/"><div className="flex gap-2"><MdGolfCourse></MdGolfCourse> Classes</div></NavLink>
+                        <NavLink to="/courses/painting"><div className="flex gap-2"><MdGolfCourse></MdGolfCourse> Classes</div></NavLink>
                     </li>
                     <li className="text-xl font-semibold text-black hover:text-white uppercase">
-                        <NavLink to="/"><div className="flex gap-2"><FaUserGraduate></FaUserGraduate> Instructors</div></NavLink>
+                        <NavLink to="/instructors"><div className="flex gap-2"><FaUserGraduate></FaUserGraduate> Instructors</div></NavLink>
                     </li>
                 </ul>
 

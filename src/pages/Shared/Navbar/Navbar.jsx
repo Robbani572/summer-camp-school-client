@@ -93,7 +93,7 @@ const NavBar = () => {
                         {navItems}
                     </ul>
                 </div>
-                <Link className="btn btn-ghost normal-case text-xl hidden md:block lg:block">
+                <Link to="/" className="btn btn-ghost normal-case text-xl hidden md:block lg:block">
                     <img className="w-full h-full" src={logo} alt="" />
                 </Link>
             </div>

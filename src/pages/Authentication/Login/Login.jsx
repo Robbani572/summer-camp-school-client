@@ -103,7 +103,7 @@ const Login = () => {
                         }
                     </div>
                     <div className="text-center">
-                        <p className="font-semibold text-white">Don't have an account? <Link to='/auth/register' className="hover:underline text-blue-600">Register</Link></p>
+                        <p className="font-semibold text-white">Do not have an account? <Link to='/auth/register' className="hover:underline text-blue-600">Register</Link></p>
                     </div>
 
                     <div className="divider text-white">OR</div>

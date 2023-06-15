@@ -1,12 +1,11 @@
 
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import logo from "../../../assets/images/icons/navLogo.png"
 // import Sun from "./Sun.svg";
 // import Moon from "./Moon.svg";
 import "./navbar.css"
 import { useContext } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
-import useCart from "../../../hooks/useCart/useCart";
 import useCurrentUser from "../../../hooks/useCurrentUser/useCurrentUser";
 
 
@@ -14,7 +13,6 @@ import useCurrentUser from "../../../hooks/useCurrentUser/useCurrentUser";
 const NavBar = () => {
 
     const { user, logOutUser } = useContext(AuthContext)
-    const [cart,] = useCart()
     const [currentUser] = useCurrentUser()
 
 

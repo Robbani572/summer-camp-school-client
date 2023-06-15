@@ -1,6 +1,4 @@
-import { useContext, useEffect, useState } from "react";
 import { NavLink, Outlet } from "react-router-dom";
-import { AuthContext } from "../providers/AuthProvider";
 import useCurrentUser from "../hooks/useCurrentUser/useCurrentUser";
 import useCart from "../hooks/useCart/useCart";
 import usePayments from "../hooks/usePayments/usePayments";
@@ -14,20 +12,9 @@ import { CgEnter } from "react-icons/cg";
 
 const Dashboard = () => {
 
-    const { user } = useContext(AuthContext)
     const [currentUser] = useCurrentUser()
     const [cart] = useCart()
     const [payments] = usePayments()
-
-    // useEffect(() => {
-    //     fetch(`http://localhost:5000/user?email=${user?.email}`)
-    //     .then(res => res.json())
-    //     .then(data => {
-    //         console.log(data)
-    //         setCurrentUser(data)
-    //     })
-
-    // }, [user])
 
 
 

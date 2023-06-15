@@ -1,6 +1,5 @@
 import { useContext, useState } from "react";
-import { BsGoogle } from "react-icons/bs";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../../../providers/AuthProvider";
 

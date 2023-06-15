@@ -5,8 +5,11 @@ import useCurrentUser from "../hooks/useCurrentUser/useCurrentUser";
 import useCart from "../hooks/useCart/useCart";
 import usePayments from "../hooks/usePayments/usePayments";
 import { BiSelectMultiple } from 'react-icons/bi';
-import { MdOutlinePaid } from 'react-icons/md';
+import { MdGolfCourse, MdOutlinePaid } from 'react-icons/md';
 import { ImUsers } from 'react-icons/im';
+import { AiFillHome } from 'react-icons/ai';
+import { FaUserGraduate } from "react-icons/fa";
+import { CgEnter } from "react-icons/cg";
 
 
 const Dashboard = () => {
@@ -54,23 +57,6 @@ const Dashboard = () => {
                                     <ImUsers></ImUsers> All Classes
                                 </NavLink>
                             </li>
-                            {/* TODO: testing purpose urls */}
-                            <li className="text-xl font-semibold text-black uppercase">
-                                <NavLink to="/dashboard/myCourses">
-                                    <span className="flex gap-2">
-                                        <BiSelectMultiple></BiSelectMultiple> Selected Classes
-                                        <div className="badge ">+{cart?.length || 0}</div>
-                                    </span>
-                                </NavLink>
-                            </li>
-                            <li className="text-xl font-semibold text-black uppercase">
-                                <NavLink to="/dashboard/enrolledClasses">
-                                    <span className="flex gap-2">
-                                        <MdOutlinePaid></MdOutlinePaid> Enrolled Classes
-                                        <div className="badge ">+{payments?.length || 0}</div>
-                                    </span>
-                                </NavLink>
-                            </li>
                         </>
                     }
 
@@ -85,17 +71,24 @@ const Dashboard = () => {
                         currentUser?.role === 'student' && <>
                             <li className="text-xl font-semibold text-black uppercase">
                                 <NavLink to="/dashboard/myCourses">
-                                    <span className="flex gap-2">
-                                        <BiSelectMultiple></BiSelectMultiple> My classes
-                                        <div className="badge">+{cart?.length || 0}</div>
+                                    <span className="flex gap-2 justify-center items-center">
+                                        <BiSelectMultiple></BiSelectMultiple> <div className="flex gap-2">My classes
+                                            <div className="badge">+{cart?.length || 0}</div></div>
                                     </span>
                                 </NavLink>
                             </li>
                             <li className="text-xl font-semibold text-black uppercase">
                                 <NavLink to="/dashboard/enrolledClasses">
-                                    <span className="flex gap-2">
-                                        <MdOutlinePaid></MdOutlinePaid> Enrolled Classes
-                                        <div className="badge ">+{payments?.length || 0}</div>
+                                    <span className="flex gap-2 justify-center items-center">
+                                        <CgEnter></CgEnter> <div className="flex gap-2">Enrolled Classes
+                                            <div className="badge ">+{payments?.length || 0}</div></div>
+                                    </span>
+                                </NavLink>
+                            </li>
+                            <li className="text-xl font-semibold text-black uppercase">
+                                <NavLink to="/dashboard/paymentHistory">
+                                    <span className="flex gap-2 justify-center items-center">
+                                        <MdOutlinePaid></MdOutlinePaid> Paymet History
                                     </span>
                                 </NavLink>
                             </li>
@@ -104,7 +97,15 @@ const Dashboard = () => {
 
                     <div className="divider"></div>
 
-                    <li className="text-xl font-semibold text-black hover:text-white uppercase"><NavLink to="/">Home</NavLink></li>
+                    <li className="text-xl font-semibold text-black hover:text-white uppercase">
+                        <NavLink to="/"><div className="flex gap-2"><AiFillHome></AiFillHome> Home</div></NavLink>
+                    </li>
+                    <li className="text-xl font-semibold text-black hover:text-white uppercase">
+                        <NavLink to="/"><div className="flex gap-2"><MdGolfCourse></MdGolfCourse> Classes</div></NavLink>
+                    </li>
+                    <li className="text-xl font-semibold text-black hover:text-white uppercase">
+                        <NavLink to="/"><div className="flex gap-2"><FaUserGraduate></FaUserGraduate> Instructors</div></NavLink>
+                    </li>
                 </ul>
 
             </div>

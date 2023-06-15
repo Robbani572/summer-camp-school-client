@@ -4,7 +4,6 @@ import useAxiosSecure from "../../../../hooks/useAxiosSecure/useAxiosSecure";
 import { AuthContext } from "../../../../providers/AuthProvider";
 import './CheckoutForm.css'
 import usePayments from "../../../../hooks/usePayments/usePayments";
-import useCart from "../../../../hooks/useCart/useCart";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 
@@ -29,7 +28,6 @@ const CheckoutForm = ({ cart, confirmRefetch }) => {
     console.log(price)
 
 
-    // TODO: axiosSecure related problem: access token not sending in proper way
     useEffect(() => {
         axiosSecure.post(`/create-payment-intent`, { amount })
             .then(res => {

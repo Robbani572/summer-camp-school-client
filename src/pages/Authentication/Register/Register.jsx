@@ -25,12 +25,22 @@ const Register = () => {
         const confirm = form.confirm.value;
         const password = form.password.value;
 
-        console.log(name, email, photo, confirm, password)
+        const re = /^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[a-zA-Z!#$%&? "])/;
 
-        if(confirm !== password){
+        if (confirm !== password) {
             setError("Password doesn't match")
             return
         }
+        else if (password.length < 7) {
+            setError('Password must contain 8 characters')
+            return
+        }
+        else if (re.test(password) === false) {
+            setError('make a storng password')
+            return
+        }
+
+
 
         createUser(email, password)
             .then(result => {
@@ -106,7 +116,7 @@ const Register = () => {
 
     return (
         <div className="hero bg-auth min-h-screen">
-            <div className="hero-content bg-auth w-3/4 md:w-1/2 shadow-2xl">
+            <div className="hero-content bg-balck bg-opacity-50 w-3/4 md:w-1/2 shadow-2xl">
                 <div className="w-full">
                     <h1 className="text-3xl md:text-5xl text-center font-bold md:my-8 ">Register now!</h1>
                     <form onSubmit={handleRegister} className="card-body">
@@ -139,16 +149,16 @@ const Register = () => {
                         </div>
                     </form>
                     <div className="text-center my-4">
-                        <p className="font-semibold text-white">Already have an account? <Link to='/auth/login' className="hover:underline text-blue-600">Login</Link></p>
-                    </div>
-                    <div className="text-center my-4">
                         {
                             error !== '' && <p className="font-semibold text-red-600">!{error}</p>
                         }
                     </div>
+                    <div className="text-center my-4">
+                        <p className="font-semibold text-white">Already have an account? <Link to='/auth/login' className="hover:underline text-blue-600">Login</Link></p>
+                    </div>
                     <div className="divider text-white">OR</div>
                     <div className="text-center">
-                        <button onClick={handleGoogleLogin} className="btn btn-circle btn-lg btn-outline text-white">
+                        <button onClick={handleGoogleLogin} className="btn btn-circle btn-lg">
                             <BsGoogle></BsGoogle>
                         </button>
                     </div>

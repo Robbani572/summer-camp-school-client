@@ -80,7 +80,7 @@ const Login = () => {
 
     return (
         <div className="hero bg-auth min-h-screen">
-            <div className="hero-content bg-auth w-3/4 md:w-1/2 shadow-2xl">
+            <div className="hero-content bg-balck bg-opacity-50 w-3/4 md:w-1/2 shadow-2xl">
                 <div className="w-full">
                     <h1 className="text-3xl md:text-5xl text-center font-bold md:my-8 ">Login now!</h1>
                     <form onSubmit={handleLogin} className="card-body">
@@ -98,16 +98,17 @@ const Login = () => {
                         </div>
                     </form>
                     <div className="text-center">
-                        <p className="font-semibold">Don't have an account? <Link to='/auth/register' className="hover:underline text-blue-600">Register</Link></p>
-                    </div>
-                    <div className="text-center">
                         {
                             error !== '' && <p className="font-semibold">!{error}</p>
                         }
                     </div>
+                    <div className="text-center">
+                        <p className="font-semibold text-white">Don't have an account? <Link to='/auth/register' className="hover:underline text-blue-600">Register</Link></p>
+                    </div>
+
                     <div className="divider text-white">OR</div>
                     <div className="text-center">
-                        <button onClick={handleGoogleLogin} className="btn btn-circle btn-lg btn-outline text-white">
+                        <button onClick={handleGoogleLogin} className="btn btn-circle btn-lg">
                             <BsGoogle></BsGoogle>
                         </button>
                     </div>

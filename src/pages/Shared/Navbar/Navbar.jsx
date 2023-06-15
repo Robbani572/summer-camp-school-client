@@ -45,44 +45,42 @@ const NavBar = () => {
 
     const navItems = <>
         <li className="hover:text-[#DCFDFF] hover:bg-transparent font-semibold md:text-xl uppercase"><Link to="/">Home</Link></li>
-        <li className="hover:text-[#DCFDFF] hover:bg-transparent font-semibold md:text-xl uppercase"><Link to="/courses/painting">Courses</Link></li>
+        <li className="hover:text-[#DCFDFF] hover:bg-transparent font-semibold md:text-xl uppercase"><Link to="/courses/painting">Classes</Link></li>
+        <li className="hover:text-[#DCFDFF] hover:bg-transparent font-semibold md:text-xl uppercase">
+            <Link to="/instructors">Instractors</Link>
+        </li>
         {
             currentUser?.role === 'instructor' && <>
                 <li className="hover:text-[#DCFDFF] hover:bg-transparent font-semibold md:text-xl uppercase">
-                    <Link to="/dashboard/addClass">Add Class</Link>
+                    <Link to="/dashboard/myClasses">Dashboard</Link>
                 </li>
             </>
         }
         {
             currentUser?.role === 'admin' && <>
                 <li className="hover:text-[#DCFDFF] hover:bg-transparent font-semibold md:text-xl uppercase">
-                    <Link to="/dashboard/allUsers">All Users</Link>
-                </li>
-                <li>
-                    <Link to="/dashboard/myCourses">
-                        <span className="hover:text-[#DCFDFF] font-semibold md:text-xl uppercase flex gap-2 bg-transparent hover:bg-transparent">
-                            My classes
-                            <div className="badge bg-[#DCFDFF]">+{cart?.length || 0}</div>
-                        </span>
-                    </Link>
+                    <Link to="/dashboard/allUsers">Dashboard</Link>
                 </li>
             </>
         }
         {
             currentUser?.role === 'student' && <>
-                <li>
+                <li className="hover:text-[#DCFDFF] hover:bg-transparent font-semibold md:text-xl uppercase">
                     <Link to="/dashboard/myCourses">
-                        <span className="hover:text-[#DCFDFF] font-semibold md:text-xl uppercase flex gap-2">
-                            My classes
-                            <div className="badge bg-[#DCFDFF]">+{cart?.length || 0}</div>
-                        </span>
+                        Dashboard
                     </Link>
                 </li>
             </>
         }
-        <li className="hover:text-[#DCFDFF] hover:bg-transparent font-semibold md:text-xl uppercase">
-            <Link to="/instructors">Instractors</Link>
-        </li>
+
+
+
+        {/* {
+            user ? <li className="hover:text-[#DCFDFF] hover:bg-transparent font-semibold md:text-xl uppercase">
+                <Link to="/dashboard">Dashboard</Link>
+            </li> : <></>
+        } */}
+
         <li className="hover:text-[#DCFDFF] hover:bg-transparent font-semibold md:text-xl uppercase"><Link to="/about">About</Link></li>
     </>
 

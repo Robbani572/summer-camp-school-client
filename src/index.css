@@ -3,7 +3,12 @@
 @tailwind utilities;
 
 .bg-auth{
-    background-image: url('./assets/images/login/login2.png');
+    background-image: url('./assets/images/login/login-bg.jpg');
+}
+
+.bg-auth-sm{
+    background-image: url('./assets/images/login/login-bg.jpg');
+    background: transparent;
 }
 
 .bg-error-1{

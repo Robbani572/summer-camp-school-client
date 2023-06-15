@@ -1,8 +1,17 @@
 import { RxUpdate } from "react-icons/rx";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 
-const MyClassesTable = ({ course, index, handleUpdateClass }) => {
+const MyClassesTable = ({ course, index, }) => {
+
+    const handleShowFeedback = course => {
+        Swal.fire({
+            title: 'Feedback!',
+            text: `Admin says: ${course.feedback.feedback}`,
+          })
+    }
+
     return (
         <tr>
             <th>
@@ -28,7 +37,13 @@ const MyClassesTable = ({ course, index, handleUpdateClass }) => {
                 </div>
             </td>
             <td>
-                <div className="text-xl font-semibold">${course.price}</div>
+                <div className="flex items-center space-x-3">
+                    <div>
+                        <div className="font-bold">Available Seats: {course.availableSeats}</div>
+                        <div className="font-bold mt-2">Enrolled Students: {course.enrolledStudents}</div>
+                        <div className="font-semibold mt-2">Price: ${course.price}</div>
+                    </div>
+                </div>
             </td>
             <td></td>
             <td>
@@ -38,7 +53,10 @@ const MyClassesTable = ({ course, index, handleUpdateClass }) => {
 
             </td>
             <th>
-                <button onClick={() => handleUpdateClass(course._id)} className="btn btn-lg btn-circle"><RxUpdate></RxUpdate></button>
+                {
+                    course.feedback ? <button onClick={() => handleShowFeedback(course)} className="btn btn-sm">Show</button> : 
+                    <div className="font-semibold">No feedback</div>
+                }
             </th>
         </tr>
     );

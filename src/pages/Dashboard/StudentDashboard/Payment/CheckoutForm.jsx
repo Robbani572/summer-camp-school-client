@@ -112,12 +112,12 @@ const CheckoutForm = ({ cart, confirmRefetch }) => {
                 .then(res => {
                     console.log(res.data)
                     console.log(res.data)
-                    if (res.data.insertResult.insertedId || res.data.deleteResult.deletedCount) {
+                    if (res.data.insertResult.insertedId || res.data.deleteResult.deletedCount || res.data.updatedResult.modifiedCount) {
                         // display consfirm
                         Swal.fire({
                             position: 'top-end',
                             icon: 'success',
-                            title: 'Your work has been saved',
+                            title: 'Payment successful',
                             showConfirmButton: false,
                             timer: 1500
                           })

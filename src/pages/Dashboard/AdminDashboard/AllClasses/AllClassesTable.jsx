@@ -2,7 +2,7 @@ import { BsFillTrash3Fill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
 
-const AllClassesTable = ({ singleClass, index, handleApproveClass, handlePendingClass, handleDenyClass, handleSendFeedback}) => {
+const AllClassesTable = ({ singleClass, index, handleApproveClass, handlePendingClass, handleDenyClass}) => {
 
 
 
@@ -45,7 +45,7 @@ const AllClassesTable = ({ singleClass, index, handleApproveClass, handlePending
                 <div className="text-sm font-semibold">{singleClass.status}</div>
             </th>
             <th>
-                <button onClick={() => handleSendFeedback(singleClass._id)} className="btn btn-sm">Feedback</button>
+                
             </th>
 
             <th>

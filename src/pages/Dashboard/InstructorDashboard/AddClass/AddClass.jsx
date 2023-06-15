@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { BsGoogle } from "react-icons/bs";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../../../providers/AuthProvider";
 
@@ -9,6 +9,7 @@ const AddClass = () => {
 
     const [error, setError] = useState('');
     const {user} = useContext(AuthContext);
+    const navigate = useNavigate()
 
     const handleAddClass = event => {
         event.preventDefault();
@@ -20,20 +21,21 @@ const AddClass = () => {
         const rating = form.rating.value;
         const image = form.photo.value;
         const availableSeats = form.availableSeats.value;
-        const enrolledStudents = form.enrolledStudents.value;
+        const email = form.email.value;
         const price = form.price.value;
         const details = form.details.value;
 
-        console.log(courseName, category, instructor, rating, image, availableSeats, enrolledStudents, price, details)
+        console.log(courseName, category, instructor, rating, image, availableSeats, price, details)
 
         const newClass = {
             courseName,
             category,
             instructor,
+            email,
             rating,
             image,
             availableSeats: parseFloat(availableSeats),
-            enrolledStudents: parseFloat(enrolledStudents),
+            enrolledStudents: 0,
             price,
             details,
             status: 'pending'
@@ -58,6 +60,7 @@ const AddClass = () => {
                         confirmButtonText: 'Ok'
                     })
                     form.reset()
+                    // navigate('/dashboard/myClasses')
                 }
         })
 
@@ -83,7 +86,7 @@ const AddClass = () => {
                         </div>
                         <div className="md:flex md:gap-4 md:mt-8">
                             <div className="form-control md:w-1/2">
-                                <input type="text" name="instructor" placeholder="Instructor Name" defaultValue={user.displayName} required className="input input-bordered bg-opacity-60 text-xl font-semibold border-0 border-b-2 rounded-none focus:outline-0" />
+                                <input type="text" name="instructor" placeholder="Instructor Name" readOnly defaultValue={user.displayName} required className="input input-bordered bg-opacity-60 text-xl font-semibold border-0 border-b-2 rounded-none focus:outline-0" />
                             </div>
                             <div className="form-control mt-8 md:mt-0 md:w-1/2">
                             <input type="text" name="rating" placeholder="Rate your Class" required className="input input-bordered bg-opacity-60 text-xl font-semibold border-0 border-b-2 rounded-none focus:outline-0" />
@@ -97,7 +100,7 @@ const AddClass = () => {
                                 <input type="number" name="availableSeats" placeholder="Available Seats" required className="input input-bordered bg-opacity-60 text-xl font-semibold border-0 border-b-2 rounded-none focus:outline-0" />
                             </div>
                             <div className="form-control mt-8 md:mt-0 col">
-                                <input type="number" name="enrolledStudents" placeholder="Total Students" required className="input input-bordered bg-opacity-60 text-xl font-semibold border-0 border-b-2 rounded-none focus:outline-0" />
+                                <input type="email" name="email" placeholder="Your email" readOnly defaultValue={user.email} required className="input input-bordered bg-opacity-60 text-xl font-semibold border-0 border-b-2 rounded-none focus:outline-0" />
                             </div>
                             <div className="form-control mt-8 md:mt-0 col">
                                 <input type="number" name="price" placeholder="$ Price" required className="input input-bordered bg-opacity-60 text-xl font-semibold border-0 border-b-2 rounded-none focus:outline-0" />

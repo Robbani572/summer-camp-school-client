@@ -1,21 +1,18 @@
 import { Helmet } from "react-helmet-async";
 import MyClassesTable from "./MyClassesTable";
 import useCourses from "../../../../hooks/useCourses/useCourses";
-import useCurrentUser from "../../../../hooks/useCurrentUser/useCurrentUser";
+import { useContext } from "react";
+import { AuthContext } from "../../../../providers/AuthProvider";
 
 
 const MyClasses = () => {
 
     const [courses] = useCourses()
-    const [currentUser] = useCurrentUser()
+    const {user} = useContext(AuthContext)
 
-    const myCourses = courses.filter(item => item.instructor === currentUser.name)
+    const myCourses = courses.filter(item => item.instructor === user.displayName)
     const pending = myCourses.filter(item => item.status === 'pending')
     const approved = myCourses.filter(item => item.status === 'approved')
-
-    const handleUpdateClass = id => {
-        console.log(id)
-    }
 
     return (
         <div>
@@ -43,7 +40,7 @@ const MyClasses = () => {
                             <th></th>
                             <th>Status</th>
                             <th></th>
-                            <th></th>
+                            <th>Admin Feedback</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -52,7 +49,6 @@ const MyClasses = () => {
                             key={course._id} 
                             course={course} 
                             index={index} 
-                            handleUpdateClass={handleUpdateClass}
                             ></MyClassesTable>)
                         }
 

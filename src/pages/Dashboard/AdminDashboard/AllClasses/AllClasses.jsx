@@ -151,6 +151,38 @@ const AllClasses = () => {
                                 .then(data => {
                                     setCourses(data)
                                     setLoading(false)
+                                    Swal.fire({
+                                        title: 'Submit your Github username',
+                                        input: 'text',
+                                        inputAttributes: {
+                                            autocapitalize: 'off'
+                                        },
+                                        showCancelButton: true,
+                                        confirmButtonText: 'Send',
+                                        showLoaderOnConfirm: true,
+                                        preConfirm: (login) => {
+                                            const updatedDoc = { feedback: login }
+                                            return updatedDoc
+                                        },
+                                        allowOutsideClick: () => !Swal.isLoading()
+                                    }).then((result) => {
+                                        console.log(result.value)
+                                        if (result.isConfirmed) {
+                                            fetch(`http://localhost:5000/courses/${singleClass._id}`, {
+                                                method: 'PUT',
+                                                headers: {
+                                                    'content-type': 'application/json'
+                                                },
+                                                body: JSON.stringify(result.value)
+                                            })
+                                                .then(response => {
+                                                    return response.json()
+                                                })
+                                                .then(data => {
+                                                    console.log(data)
+                                                })
+                                        }
+                                    })
                                 })
                         }
                     })
@@ -158,42 +190,7 @@ const AllClasses = () => {
         })
     }
 
-    const handleSendFeedback = id => {
-
-
-        Swal.fire({
-            title: 'Submit your Github username',
-            input: 'text',
-            inputAttributes: {
-                autocapitalize: 'off'
-            },
-            showCancelButton: true,
-            confirmButtonText: 'Send',
-            showLoaderOnConfirm: true,
-            preConfirm: (login) => {
-                const updatedDoc = {feedback: login}
-                return updatedDoc
-            },
-            allowOutsideClick: () => !Swal.isLoading()
-        }).then((result) => {
-            console.log(result.value)
-            if (result.isConfirmed) {
-                fetch(`http://localhost:5000/courses/${id}`, {
-                    method: 'PUT',
-                    headers: {
-                        'content-type': 'application/json'
-                    },
-                    body: JSON.stringify(result.value)
-                })
-                    .then(response => {
-                        return response.json()
-                    })
-                    .then(data => {
-                        console.log(data)
-                    })
-            }
-        })
-    }
+    
 
     useEffect(() => {
         // axiosSecure.get('/users')
@@ -238,8 +235,7 @@ const AllClasses = () => {
                                 index={index}
                                 handleApproveClass={handleApproveClass}
                                 handlePendingClass={handlePendingClass}
-                                handleDenyClass={handleDenyClass}
-                                handleSendFeedback={handleSendFeedback}></AllClassesTable>)
+                                handleDenyClass={handleDenyClass}></AllClassesTable>)
                         }
 
                     </tbody>

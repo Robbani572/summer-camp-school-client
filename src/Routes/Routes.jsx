@@ -18,6 +18,7 @@ import AllClasses from '../pages/Dashboard/AdminDashboard/AllClasses/AllClasses'
 import Instructors from '../pages/Instructors/Instructors';
 import InstrcutorDetails from '../pages/InstructorDetails/InstrcutorDetails';
 import PaymentHistory from '../pages/Dashboard/StudentDashboard/PaymentHistory/PaymentHistory';
+import About from '../pages/About/About';
 
 const router = createBrowserRouter([
     {
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
                 path: 'instructorDetails/:id',
                 element: <InstrcutorDetails></InstrcutorDetails>,
                 loader: ({params}) => fetch(`https://artistry-moth-school-server.vercel.app/instructors/${params.id}`)
+            },
+            {
+                path: 'about',
+                element: <About></About>
             },
             {
                 path: "*",

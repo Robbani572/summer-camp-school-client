@@ -40,6 +40,7 @@ const Register = () => {
                     name,
                     email,
                     role: 'student',
+                    img: photo
                 }
                 updateUser(name, photo)
                     .then(() => {
@@ -77,6 +78,7 @@ const Register = () => {
                     name: newUser.displayName,
                     email: newUser.email,
                     role: 'student',
+                    img: newUser.photoURL
                 }
 
                 fetch('http://localhost:5000/users', {

@@ -93,7 +93,7 @@ const CheckoutForm = ({ cart, confirmRefetch }) => {
         setProcessing(false)
 
         if (paymentIntent.status === 'succeeded') {
-            //TODO: next steps
+            
             setTransactionId(paymentIntent.id)
             setSuccess(paymentIntent.id)
 

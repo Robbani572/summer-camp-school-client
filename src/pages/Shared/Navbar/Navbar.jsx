@@ -1,5 +1,5 @@
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../../../assets/images/icons/navLogo.png"
 // import Sun from "./Sun.svg";
 // import Moon from "./Moon.svg";
@@ -20,6 +20,7 @@ const NavBar = () => {
 
     const handleLogOut = () => {
         logOutUser()
+        window.location.reload();
     }
 
 
@@ -77,11 +78,11 @@ const NavBar = () => {
                         </span>
                     </Link>
                 </li>
-                <li className="hover:text-[#DCFDFF] hover:bg-transparent font-semibold md:text-xl uppercase">
-                    <Link to="/instractor">Instractors</Link>
-                </li>
             </>
         }
+        <li className="hover:text-[#DCFDFF] hover:bg-transparent font-semibold md:text-xl uppercase">
+            <Link to="/instructors">Instractors</Link>
+        </li>
         <li className="hover:text-[#DCFDFF] hover:bg-transparent font-semibold md:text-xl uppercase"><Link to="/about">About</Link></li>
     </>
 

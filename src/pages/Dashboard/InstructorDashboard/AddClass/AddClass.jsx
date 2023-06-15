@@ -59,7 +59,9 @@ const AddClass = () => {
                         icon: 'success',
                         confirmButtonText: 'Ok'
                     })
-                    form.reset()
+                    // TODO: uncomment those two line
+
+                    // form.reset()
                     // navigate('/dashboard/myClasses')
                 }
         })

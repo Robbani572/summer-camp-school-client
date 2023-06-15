@@ -16,7 +16,7 @@ const Courses = () => {
     return (
         <Tabs
             selectedTabClassName="border-[#DCFDFF] border-b-4 border-0 text-[#282E7A]"
-            className="max-w-screen-xl mx-auto min-h-screen md:shadow-2xl md:bg-base-100 pt-20 px-10"
+            className="max-w-screen-xl mx-auto min-h-screen md:shadow-2xl md:bg-base-100 pt-20 px-10 pb-10 mb-20"
         >
 
             <TabList className="flex justify-center items-center md:gap-8 md:p-8 mb-8 gap-4">

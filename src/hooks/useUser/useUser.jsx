@@ -34,7 +34,7 @@ const useUser = () => {
                     .then(res => res.json())
                     .then(data => {
                         console.log(data)
-                        if (data.modifiedCount > 0) {
+                        if (data.result.modifiedCount > 0) {
                             Swal.fire(
                                 'Congrats!',
                                 `${user.name} is an admin now`,
@@ -53,6 +53,7 @@ const useUser = () => {
 
     const handleMakeInstructor = user => {
         const updatedUser = {
+            userId: user._id,
             role: 'instructor'
         }
 
@@ -76,7 +77,7 @@ const useUser = () => {
                     .then(res => res.json())
                     .then(data => {
                         console.log(data)
-                        if (data.modifiedCount > 0) {
+                        if (data.result.modifiedCount > 0) {
                             Swal.fire(
                                 'Congrats!',
                                 `${user.name} is an instructor now`,
@@ -85,6 +86,7 @@ const useUser = () => {
 
                             axiosSecure.get('/users')
                                 .then(data => {
+                                    console.log(data)
                                     setUsers(data.data)
                                     setLoading(false)
                                 })

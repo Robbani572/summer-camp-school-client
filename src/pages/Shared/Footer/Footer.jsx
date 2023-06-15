@@ -1,4 +1,7 @@
+import { Link } from 'react-router-dom';
 import logo from '../../../assets/images/icons/navLogo.png'
+import { BsFacebook, BsTwitter, BsInstagram, } from 'react-icons/bs';
+import { FaRegCopyright } from 'react-icons/fa';
 
 const Footer = () => {
     return (
@@ -6,31 +9,29 @@ const Footer = () => {
             <div className="footer p-10 text-base-content">
                 <div>
                     <img src={logo} alt="" />
-                    <p>ACME Industries Ltd.<br />Providing reliable tech since 1992</p>
+                    <p>Artistry Moth School<br />The best art and crafts learning place</p>
                 </div>
                 <div>
-                    <span className="footer-title">Services</span>
-                    <a className="link link-hover">Branding</a>
-                    <a className="link link-hover">Design</a>
-                    <a className="link link-hover">Marketing</a>
-                    <a className="link link-hover">Advertisement</a>
+                    <span className="footer-title">Courses</span>
+                    <Link to="/courses/painting" className="link link-hover">Painting</Link>
+                    <Link to="/courses/drawing" className="link link-hover">Drawing</Link>
+                    <Link to="/courses/sculpture" className="link link-hover">Sculpture</Link>
                 </div>
                 <div>
-                    <span className="footer-title">Company</span>
-                    <a className="link link-hover">About us</a>
-                    <a className="link link-hover">Contact</a>
-                    <a className="link link-hover">Jobs</a>
-                    <a className="link link-hover">Press kit</a>
+                    <span className="footer-title">Social links</span>
+                    <a className="link link-hover"><div className='flex gap-2 items-center justify-center'><BsFacebook></BsFacebook> Facebook</div></a>
+                    <a className="link link-hover"><div className='flex gap-2 items-center justify-center'><BsTwitter></BsTwitter> Twitter</div></a>
+                    <a className="link link-hover"><div className='flex gap-2 items-center justify-center'><BsInstagram></BsInstagram> Instagram</div></a>
                 </div>
                 <div>
-                    <span className="footer-title">Legal</span>
-                    <a className="link link-hover">Terms of use</a>
-                    <a className="link link-hover">Privacy policy</a>
-                    <a className="link link-hover">Cookie policy</a>
+                    <span className="footer-title">Location</span>
+                    <a className="link link-hover">New York || USA</a>
+                    <a className="link link-hover">Loss Angeles || USA</a>
+                    <a className="link link-hover">Bogura || Bangladesh</a>
                 </div>
             </div>
             <div className='w-full h-16 bg-base-200 text-center flex justify-center items-center'>
-                <h3>All copy right reserved</h3>
+                <h3 className='flex justify-center items-center gap-2'>All copiright <FaRegCopyright></FaRegCopyright> reserved || artisty moth school 2023</h3>
             </div>
         </footer>
     );

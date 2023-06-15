@@ -1,6 +1,7 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
+import { FaQuoteLeft } from "react-icons/fa";
 
 // Import Swiper styles
 import "swiper/css";
@@ -11,6 +12,18 @@ import "swiper/css/pagination";
 import { EffectCoverflow, Pagination } from "swiper";
 
 const StudentFeedback = () => {
+
+    const [feedback, setFeedback] = useState([])
+
+    useEffect(() => {
+        fetch('http://localhost:5000/feedback')
+        .then(res => res.json())
+        .then(data=> {
+            console.log(data)
+            setFeedback(data)
+        })
+    }, [])
+
     return (
         <div>
             <Swiper
@@ -27,35 +40,20 @@ const StudentFeedback = () => {
                 }}
                 pagination={true}
                 modules={[EffectCoverflow, Pagination]}
-                className="mySwiper"
+                className="mySwiper bg-feedback"
             >
-                <SwiperSlide>
-                    <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <img src="https://swiperjs.com/demos/images/nature-5.jpg" />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <img src="https://swiperjs.com/demos/images/nature-6.jpg" />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <img src="https://swiperjs.com/demos/images/nature-7.jpg" />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <img src="https://swiperjs.com/demos/images/nature-8.jpg" />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <img src="https://swiperjs.com/demos/images/nature-9.jpg" />
-                </SwiperSlide>
+                {
+                    feedback.map(review => <SwiperSlide
+                        key={review._id}
+                        className="bg-black bg-opacity-30"
+                    >
+                        <div className="m-20 flex flex-col items-center text-white py-4">
+                            <FaQuoteLeft className="w-24 h-24 mt-4"></FaQuoteLeft>
+                            <p className="my-6">{review.feedback}</p>
+                            <h3 className="text-3xl font-semibold uppercase">{review.name}</h3>
+                        </div>
+                    </SwiperSlide>)
+                }
             </Swiper>
         </div>
     );

@@ -4,7 +4,6 @@ import { AuthContext } from "../providers/AuthProvider";
 import useCurrentUser from "../hooks/useCurrentUser/useCurrentUser";
 import useCart from "../hooks/useCart/useCart";
 import usePayments from "../hooks/usePayments/usePayments";
-import { BsBookmarkStarFill } from 'react-icons/bs';
 import { BiSelectMultiple } from 'react-icons/bi';
 import { MdOutlinePaid } from 'react-icons/md';
 import { ImUsers } from 'react-icons/im';

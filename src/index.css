@@ -24,3 +24,8 @@
 .drawer-side a {
     background-color: transparent;
 }
+
+.bg-feedback{
+    background-image: url('https://www.daysoftheyear.com/wp-content/uploads/world-student-day1.jpg');
+    background-repeat: no-repeat;
+}

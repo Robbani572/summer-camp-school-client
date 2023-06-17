@@ -39,7 +39,7 @@ const MyCourses = () => {
     }
 
     return (
-        <div>
+        <div className="max-w-screen-xl mx-auto">
             <Helmet>
                 <title>Artistry | My Courses</title>
             </Helmet>

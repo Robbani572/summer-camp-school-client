@@ -21,7 +21,7 @@ const MyClasses = () => {
                 <title>Artistry | My Courses</title>
             </Helmet>
             <div className="my-20">
-                <h2 className="text-4xl font-semibold uppercase text-center">You have added {myCourses.length} courses</h2>
+                <h2 className="md:text-4xl text-2xl font-semibold uppercase text-center">You have added {myCourses.length} courses</h2>
                 <div className="flex justify-center items-center mt-4 gap-4">
                     <p className="text-green-600 font-semibold">{approved.length || 0} Approved</p>
                     <div className="divider lg:divider-horizontal"></div>

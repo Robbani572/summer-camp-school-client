@@ -14,7 +14,7 @@ const AllUsers = () => {
                 <title>Artistry | All Users</title>
             </Helmet>
             <div className="my-20">
-                <h2 className="text-4xl font-semibold uppercase text-center">Total: {users.length}</h2>
+                <h2 className="md:text-4xl text-2xl font-semibold uppercase text-center">Total: {users.length}</h2>
             </div>
 
             <div className="w-full">

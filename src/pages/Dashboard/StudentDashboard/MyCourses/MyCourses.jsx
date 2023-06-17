@@ -39,12 +39,12 @@ const MyCourses = () => {
     }
 
     return (
-        <div className="max-w-screen-xl mx-auto">
+        <div>
             <Helmet>
                 <title>Artistry | My Courses</title>
             </Helmet>
             <div className="my-20">
-                <h2 className="text-4xl font-semibold uppercase text-center">Your selected classes: {carts.length}</h2>
+                <h2 className="md:text-4xl text-2xl font-semibold uppercase text-center">Your selected classes: {carts.length}</h2>
             </div>
 
             <div className="w-full">

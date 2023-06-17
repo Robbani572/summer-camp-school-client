@@ -13,8 +13,8 @@ const Payment = () => {
     const [, refetch] = useCart()
 
     return (
-        <div className="">
-            <h2 className="text-5xl font-bold mb-20">Payment amount: {cart.price}</h2>
+        <div className="p-8">
+            <h2 className="text-2xl md:text-5xl font-bold mb-20">Payment amount: ${cart.price}</h2>
 
             
             <Elements stripe={stripePromise}>

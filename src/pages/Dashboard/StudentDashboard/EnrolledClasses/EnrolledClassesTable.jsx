@@ -12,7 +12,7 @@ const EnrolledClassesTable = ({paid, index}) => {
             <td>
                 <div className="flex items-center space-x-3">
                     <div className="avatar">
-                        <div className="mask h-36 w-36">
+                        <div className="mask h-24 w-24 rounded-xl">
                             <img src={paid.image} alt="Avatar Tailwind CSS Component" />
                         </div>
                     </div>
